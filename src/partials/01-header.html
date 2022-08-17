@@ -8,6 +8,15 @@
     </picture>
   </a>
 
+  <form class="search__form">
+    <button class="search-btn" type="submit">
+      <svg class="search__icon" width="20" height="20">
+        <use href="./images/icons.svg#icon-icon-search"></use>
+      </svg>
+    </button>
+    <input class="search__input" type="text" name="text" autocomplete="name" placeholder="Search">
+  </form>
+
   <button type="button" class="mob-btn-open" aria-label="mobile menu button">
     <svg class="mob-btn__icon" width="30" height="16">
       <use class="mob-btn__open" href="./images/icons.svg#icon-menu-1"></use>
@@ -21,6 +30,13 @@
       </svg>
     </button>
 
+    <div class="checkbox__wrapper">
+      <label>Light<input type="radio" name="changeTheme" value="false" checked>
+      </label>
+      <label><input type="radio" name="changeTheme" value="true">
+        Dark</label>
+    </div>
+
     <form class="search__form">
       <button class="search-btn" type="submit">
         <svg class="search__icon" width="20" height="20">
@@ -29,6 +45,12 @@
       </button>
       <input class="search__input" type="text" name="text" autocomplete="name" placeholder="Search">
     </form>
+
+    <nav class="mob-nav">
+      <a href="" class="mob-nav__link">Home</a>
+      <a href="" class="mob-nav__link">Favorite cocktails</a>
+      <a href="" class="mob-nav__link">Favorite ingredients</a>
+    </nav>
 
   </div>
 </div>

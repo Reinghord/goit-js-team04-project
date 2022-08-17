@@ -4,47 +4,45 @@
   opacity: 0;
   pointer-events: none;
 }
+
 .header__container {
   display: flex;
   padding: 20px 20px 0;
 }
 
-.mob-btn-open,
-.mob-btn-close {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
-  padding: 0;
-  border: none;
-  background-color: transparent;
-}
-
-.mob-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 1;
-  width: 100%;
-  height: 100%;
-  padding: 30px 20px;
-  overflow-y: scroll;
-  z-index: 2;
-
-  background-color: #ffffff;
-}
-
 .search__form {
+  display: none;
   position: relative;
+  .mob-menu & {
+    display: block;
+    @include mq(tab) {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
 }
+
 .search-btn {
   position: absolute;
   display: flex;
   padding: 10px;
   border: none;
-  border-right: 1px solid;
+  border-right: 1px solid var(--grapefruit);
   background-color: transparent;
 }
+
 .search__input {
-  padding: 8px 0 8px 40px;
+  margin-bottom: 40px;
+  min-height: 40px;
+  width: 100%;
+  outline: none;
+  border: 1px solid var(--grapefruit);
+  border-radius: 4px;
+  padding: 8px 0 8px 48px;
+}
+
+.checkbox__wrapper {
+  margin-bottom: 40px;
 }

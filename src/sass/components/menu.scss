@@ -1,0 +1,48 @@
+.mob-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  padding: 25px 20px;
+  overflow-y: scroll;
+  z-index: 2;
+
+  background-color: var(--white);
+}
+
+.mob-btn-open,
+.mob-btn-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+.mob-btn-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+.mob-nav__link {
+  display: block;
+  color: currentColor;
+  transition-property: color;
+  @include transition;
+  font-size: 28px;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+
+  &:hover,
+  &:focus {
+    color: var(--grapefruit);
+  }
+  & + & {
+    margin-top: 32px;
+  }
+}
