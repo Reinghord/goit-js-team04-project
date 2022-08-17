@@ -1,0 +1,121 @@
+.cocktails {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    
+}
+
+.title-cocktails{
+    text-align: center;
+padding-bottom: 60px;
+
+color: var(--black);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.91
+}
+
+.cocktails-name {
+    margin-top: 20px;
+    margin-bottom: 16px;
+
+font: var(--fontSecondary);
+text-align: center;
+
+color: var(--black);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.62
+}
+.cocktails-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    @media screen and (min-width: $tablet) {
+        gap: 32px;
+    }
+    
+}
+.cocktails-item{
+    height: auto;
+    width: calc(100vw - 40px);
+    border: 1px solid var(--grapefruit);
+    border-radius: 4px;
+
+    @media screen and (min-width: 480px) {
+        width: 480px;
+    }
+    @media screen and (min-width: $tablet) {
+            width: calc((100% - 98px)/2);
+    }
+    @media screen and (min-width: $desktop) {
+            width: calc((100% - 94px)/3);
+    }
+}
+.cocktails-img{
+    display: block;
+    width: 100%;
+    // height: 395px;
+}
+
+// btns
+
+.cocktails-btn__wrapper{
+justify-content: center;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 24px;
+    width: calc(100vw - 82px);
+    @media screen and (min-width: 480px) {
+            width: calc(100% - 42px);
+        }
+}
+
+.cocktails-btn{
+    min-width: 108px;
+    min-height: 39px;
+
+    font-family: var(--fontSecondary);
+    font-size: 14px;
+    line-height: 1.71;
+
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+.cocktails-learn{
+    background-color: var(--auxOrange);
+    border-style: none;
+    border-radius: 4px;
+
+    color: var(--white);
+}
+.cocktails-learn:hover,
+.cocktails-learn:focus {
+    background-color: var(--white);
+    color: var(--grapefruit);
+}
+.cocktails-learn:active {
+    background-color: var(--grapefruit);
+    color: var(--white);
+}
+
+.cocktails-add{
+
+    border: 1px solid var(--grapefruit);
+        border-radius: 4px;
+        
+    color: var(--grapefruit);
+    background-color: transparent;
+}
+
+.cocktails-add:hover,
+.cocktails-add:focus {
+    background-color: #F5F5F5;
+    color: var(--grapefruit);
+}
+.cocktails-svg{
+    fill: var(--grapefruit);
+
+}
