@@ -1,0 +1,46 @@
+body {
+  font-family: var(--fontPrimary);
+  color: var(--colorPrimary);
+  background-color: var(--bgColorPrimary);
+}
+
+$global-list: h1, h2, h3, h4, h5, p, ul;
+@each $tag in $global-list {
+  #{$tag} {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @media screen and (min-width: $mobile) {
+    width: 100vw;
+  }
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
+  @media screen and (min-width: $tablet) {
+    width: $tablet;
+  }
+  @media screen and (min-width: $desktop) {
+    width: $desktop;
+  }
+}
+
+ul {
+  text-decoration: none;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
