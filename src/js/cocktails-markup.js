@@ -1,8 +1,9 @@
 export default function cocktailsMarkup() {
-  const markup = data;
-}
-<li class="cocktails-item">
-  <img class="cocktails-img" src="" alt="" />
+  const markup = cocktailsData.data.drinks
+    .map(drink => {
+      return `<li class="cocktails-item">
+  <img class="cocktails-img" src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
+  <p class="cocktails-name">${drink.strDrink}</p>
   <button class="cocktails-btn cocktails-learn">Learn more</button>
   <button class="cocktails-btn cocktails-add">
     Add to
@@ -10,4 +11,8 @@ export default function cocktailsMarkup() {
       <use class="cocktails-svg" href="./images/icons.svg#icon-icon-fav"></use>
     </svg>
   </button>
-</li>;
+</li>`;
+    })
+    .join('');
+  return markup;
+}
