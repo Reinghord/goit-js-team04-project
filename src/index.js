@@ -9,9 +9,14 @@ const cocktailsList = document.querySelector('.cocktails-list');
 async function doMagic() {
   const response = await getCocktails();
   const markup = cocktailsMarkup(response);
-  cocktailsList.innerHTML = markup;
+  const filteredMarkup = markupFilter(markup);
+  cocktailsList.innerHTML = filteredMarkup;
+
+  // window.addEventListener('resize', debounce(debounceMarkup, 200));
+
+  // function debounceMarkup() {
+  //   cocktailsList.innerHTML = markupFilter(markup);
+  // }
 }
 
 doMagic();
-
-window.addEventListener('resize', debounce(markupFilter(cocktailsMarkup), 200));
