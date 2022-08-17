@@ -1,4 +1,4 @@
-// transfonming data
+// Function to create an array of markup
 const cocktailsMarkup = function (cocktailsData) {
   return cocktailsData.data.drinks.map(drink => {
     return `<li class="cocktails-item">
@@ -15,16 +15,17 @@ const cocktailsMarkup = function (cocktailsData) {
   });
 };
 
-// filtering data
+// Function to filter amount of objects to render based on screen width
 function markupFilter(cocktailsMarkup) {
-  let filteredMarkup = [];
   if (window.screen.width < 768) {
-    filteredMarkup = cocktailsMarkup.filter((_, index) => index <= 2);
-  } else if (window.screen.width >= 768) {
-    filteredMarkup = cocktailsMarkup.filter((_, index) => index <= 8);
-    const finalMarkup = filteredMarkup.join('');
+    const filteredMarkup = cocktailsMarkup.filter((_, index) => index <= 2);
+    return filteredMarkup.join('');
+  } else if (window.screen.width >= 768 && window.screen.width < 1280) {
+    const filteredMarkup = cocktailsMarkup.filter((_, index) => index <= 5);
+    return filteredMarkup.join('');
   }
-  return filteredMarkup;
+  const filteredMarkup = cocktailsMarkup.filter((_, index) => index <= 8);
+  return filteredMarkup.join('');
 }
 
 export { cocktailsMarkup, markupFilter };
