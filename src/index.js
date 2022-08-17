@@ -1,4 +1,5 @@
 //Imports
+import './js/header';
 import cocktailsMarkup from './js/cocktails-markup';
 import getCocktails from './js/thecocktailsDB';
 
