@@ -1,21 +1,53 @@
 .hero {
-  display: flex;
+  @include mq(tab) {
+    display: flex;
+  }
 }
 
 .hero__title {
-  padding-top: 97px;
-  padding-left: 16px;
-  margin-bottom: 40px;
+  padding-top: 60px;
+  padding-left: 20px;
+  margin-bottom: 28px;
+
+  width: 300px;
 
   color: rgba(253, 81, 3, 1);
   font-family: 'Poppins';
-
   font-weight: 600;
-  font-size: 52px;
-  line-height: 1.54;
+  font-size: 22px;
+  line-height: 1.91;
+
+  @include mq(tab-only) {
+    width: 380px;
+    padding-top: 132px;
+    padding-left: 32px;
+    margin-bottom: 40px;
+
+    font-size: 26px;
+    line-height: 1.62;
+  }
+
+  @include mq(desc) {
+    font-size: 52px;
+    line-height: 1.54;
+    width: 720px;
+    padding-top: 97px;
+    padding-left: 16px;
+    margin-bottom: 40px;
+  }
 }
 
 .hero__text {
+  @include mq(mob-only) {
+    display: none;
+  }
+
+  @include mq(tab-only) {
+    padding-left: 32px;
+    font-size: 14px;
+    line-height: 2;
+  }
+
   margin-bottom: 40px;
   padding-left: 16px;
   font-family: 'Poppins';
@@ -27,22 +59,99 @@
   opacity: 0.8;
 }
 
-.hero__form {
-  padding-left: 16px;
-  padding-bottom: 192px;
+.hero-list-button {
+  @include mq(mob-only) {
+    display: none;
+  }
+
+  width: 320px;
+  padding-left: 32px;
+  padding-bottom: 194px;
+
+  @include mq(desc) {
+    width: 400px;
+    padding-left: 16px;
+    padding-bottom: 192px;
+  }
 }
 
 .hero__button {
+  @include mq(mob-only) {
+    display: none;
+  }
+
   font-family: 'Poppins';
   font-weight: 700;
-  font-size: 24px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
   line-height: 1.5;
-  color: #5f6775;
   border: 0;
   background-color: transparent;
+
+  @include mq(desc) {
+    font-size: 24px;
+    color: #5f6775;
+  }
 }
 
 .hero__img {
-  padding-top: 37px;
-  padding-bottom: 60px;
+  display: block;
+  margin-bottom: 28px;
+  margin-left: 20px;
+
+  @include mq(tab) {
+    padding-top: 37px;
+    padding-bottom: 60px;
+    margin-left: auto;
+  }
+}
+
+.hero__text-mob {
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  color: #000000;
+  opacity: 0.8;
+
+  padding-left: 20px;
+  margin-bottom: 34px;
+
+  @include mq(tab-only) {
+    display: none;
+  }
+  @include mq(desc) {
+    display: none;
+  }
+}
+
+.hero__select-mob {
+  width: 93px;
+  height: 34px;
+  color: #fd5103;
+  border-color: #fd5103;
+  @include mq(tab) {
+    display: none;
+  }
+}
+
+.hero__select-mob:hover {
+  background: #fd5103;
+  color: white;
+
+  @include mq(tab) {
+    display: none;
+  }
+}
+
+.hero__wrapper-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 54px;
+
+  @include mq(tab) {
+    display: none;
+  }
 }
