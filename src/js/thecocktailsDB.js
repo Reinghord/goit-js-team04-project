@@ -13,5 +13,3 @@ export default async function getCocktails() {
     throw new Error(error);
   }
 }
-
-getCocktails();
