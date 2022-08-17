@@ -1,3 +1,4 @@
+// transfonming data
 const cocktailsMarkup = function (cocktailsData) {
   return cocktailsData.data.drinks.map(drink => {
     return `<li class="cocktails-item">
@@ -14,7 +15,7 @@ const cocktailsMarkup = function (cocktailsData) {
   });
 };
 
-// window.addEventListener('resize', debounce(markupFilter(cocktailsMarkup), 200));
+// filtering data
 function markupFilter(cocktailsMarkup) {
   let filteredMarkup = [];
   if (window.screen.width < 768) {
