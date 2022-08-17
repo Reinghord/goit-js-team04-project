@@ -1,4 +1,4 @@
-export default function cocktailsMarkup() {
+export default function cocktailsMarkup(cocktailsData) {
   const markup = cocktailsData.data.drinks
     .map(drink => {
       return `<li class="cocktails-item">
