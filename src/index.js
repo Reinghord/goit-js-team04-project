@@ -12,8 +12,10 @@ import {
 } from './js/hero';
 
 //Refs and vars
-const { cocktailsList } = {
+const { cocktailsList, heroButtonRef, heroSelectRef } = {
   cocktailsList: document.querySelector('.cocktails-list'),
+  heroButtonRef: document.querySelector('.hero-list-button'),
+  heroSelectRef: document.querySelector('[name="search"]'),
 };
 ////Var to store markup data on init loading or query
 let markup = [];
@@ -25,8 +27,8 @@ onLoadingHome();
 
 //Function to execute on initial page loading OR when returned to Home window for SPA
 function onLoadingHome() {
-  createSearchButtons(buttons);
-  createSearchButtonsMobile(buttons);
+  createSearchButtons(buttons, heroButtonRef);
+  createSearchButtonsMobile(buttons, heroSelectRef);
   getAndRenderRandomCocktails();
   window.addEventListener('resize', debounceResizedMarkup);
 }

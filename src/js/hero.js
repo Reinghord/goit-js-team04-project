@@ -1,6 +1,3 @@
-heroButtonRef = document.querySelector('.hero-list-button');
-heroSelectRef = document.querySelector('[name="search"]');
-
 export const buttons = [
   'A',
   'B',
@@ -39,20 +36,20 @@ export const buttons = [
   '9',
   '0',
 ];
-export function createSearchButtons(buttons) {
+export function createSearchButtons(buttons, elem) {
   const markup = buttons
     .map(button => {
       return `<button type = "button" class="hero__button">${button}</button>`;
     })
     .join('');
-  heroButtonRef.innerHTML = markup;
+  elem.innerHTML = markup;
 }
 
-export function createSearchButtonsMobile(buttons) {
+export function createSearchButtonsMobile(buttons, elem) {
   const markup = buttons
     .map(button => {
       return `<option value="${button}">${button}</option>`;
     })
     .join('');
-  heroSelectRef.innerHTML = markup;
+  elem.innerHTML = markup;
 }
