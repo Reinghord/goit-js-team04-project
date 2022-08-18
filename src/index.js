@@ -50,7 +50,7 @@ function onLoadingHome() {
 
 //Function to update markup amount based on window width
 function resizeMarkup() {
-  cocktailsList.innerHTML = markupFilter(markup);
+  cocktailsList.innerHTML = markupFilter();
 }
 
 //Function to get random cocktails, prepare markup and render depending on screen size
