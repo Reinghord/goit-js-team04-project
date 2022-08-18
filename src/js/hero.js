@@ -35,7 +35,6 @@ export const buttons = [
   '8',
   '9',
   '0',
-  '',
 ];
 export function createSearchButtons(buttons, elem) {
   const markup = buttons
