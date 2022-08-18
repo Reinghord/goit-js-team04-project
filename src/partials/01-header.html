@@ -1,0 +1,56 @@
+<div class="container header__container">
+  <a href="/" class="header__logo">
+    <picture>
+      <source srcset="./images/logo-mob-x1-min.png 1x, ./images/logo-mob-x2-min.png 2x" media="(max-width: 767px)">
+      <source srcset="./images/logo-tab-x1-min.png 1x, ./images/logo-tab-x2-min.png 2x" media="(min-width: 768px)">
+      <source>
+      <img src="./images/logo-mob-x1-min.png" alt="logo">
+    </picture>
+  </a>
+
+  <form class="search__form">
+    <button class="search-btn" type="submit">
+      <svg class="search__icon" width="20" height="20">
+        <use href="./images/icons.svg#icon-icon-search"></use>
+      </svg>
+    </button>
+    <input class="search__input" type="text" name="text" autocomplete="name" placeholder="Search">
+  </form>
+
+  <button type="button" class="mob-btn-open" aria-label="mobile menu button">
+    <svg class="mob-btn__icon" width="30" height="16">
+      <use class="mob-btn__open" href="./images/icons.svg#icon-menu-1"></use>
+    </svg>
+  </button>
+
+  <div class="mob-menu is-hidden" data-menu>
+    <button type="button" class="mob-btn-close" aria-label="mobile menu button">
+      <svg class="mob-btn__icon" width="32" height="32">
+        <use href="./images/icons.svg#icon-close"></use>
+      </svg>
+    </button>
+
+    <div class="checkbox__wrapper">
+      <label>Light<input type="radio" name="changeTheme" value="false" checked>
+      </label>
+      <label><input type="radio" name="changeTheme" value="true">
+        Dark</label>
+    </div>
+
+    <form class="search__form">
+      <button class="search-btn" type="submit">
+        <svg class="search__icon" width="20" height="20">
+          <use href="./images/icons.svg#icon-icon-search"></use>
+        </svg>
+      </button>
+      <input class="search__input" type="text" name="text" autocomplete="name" placeholder="Search">
+    </form>
+
+    <nav class="mob-nav">
+      <a href="" class="mob-nav__link">Home</a>
+      <a href="" class="mob-nav__link">Favorite cocktails</a>
+      <a href="" class="mob-nav__link">Favorite ingredients</a>
+    </nav>
+
+  </div>
+</div>
