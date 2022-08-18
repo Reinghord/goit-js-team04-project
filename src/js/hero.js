@@ -1,3 +1,5 @@
+import { heroButtonRef, heroSelectRef } from './refs';
+
 export const buttons = [
   'A',
   'B',
@@ -36,22 +38,22 @@ export const buttons = [
   '9',
   '0',
 ];
-export function createSearchButtons(buttons, elem) {
+export function createSearchButtons(buttons) {
   const markup = buttons
     .map(button => {
       return `<button type = "button" class="hero__button">${button}</button>`;
     })
     .join('');
-  elem.innerHTML = markup;
+  heroButtonRef.innerHTML = markup;
 }
 
-export function createSearchButtonsMobile(buttons, elem) {
+export function createSearchButtonsMobile(buttons) {
   const markup = buttons
     .map(button => {
       return `<option value="${button}">${button}</option>`;
     })
     .join('');
-  elem.innerHTML = markup;
+  heroSelectRef.innerHTML = markup;
 }
 
 heroButtonToggleClassRef = document.querySelector('.hero-list-button');

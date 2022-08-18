@@ -5,10 +5,11 @@ import {
   markupFilter,
   noResultsMarkup,
 } from '../cocktails-markup';
+import { cocktailsList } from '../refs';
 
 //Function to call during click on Learn more button
 //Fetching full details of cocktail ID
-export async function onClickSearchLetter(e, array, elem) {
+export async function onClickSearchLetter(e, array) {
   if (e.target.nodeName === 'BUTTON') {
     try {
       const letter = e.target.textContent;
@@ -16,10 +17,10 @@ export async function onClickSearchLetter(e, array, elem) {
       if (response.data.drinks) {
         array = cocktailsMarkup(response);
         const filteredMarkup = markupFilter(array);
-        return (elem.innerHTML = filteredMarkup);
+        return (cocktailsList.innerHTML = filteredMarkup);
       }
       //INSERT HERE MARKUP FOR NOT FOUND
-      return (elem.innerHTML = noResultsMarkup());
+      return (cocktailsList.innerHTML = noResultsMarkup());
     } catch (error) {
       errorPopup();
     }

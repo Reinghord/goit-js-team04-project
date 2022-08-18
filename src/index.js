@@ -19,6 +19,16 @@ import {
   onClickLearnMoreClose,
 } from './js/onclick/onClickLearnMore';
 import { onClickSearchLetter } from './js/onclick/onclicksearchletter';
+//Refs
+import {
+  backdrop,
+  modalWrapper,
+  cocktailsList,
+  cocktailsListCloseBtn,
+  letterList,
+  heroButtonRef,
+  heroSelectRef,
+} from './js/refs';
 
 //Refs and vars
 const {
@@ -50,19 +60,13 @@ onLoadingHome();
 
 //Function to execute on initial page loading OR when returned to Home window for SPA
 function onLoadingHome() {
-  createSearchButtons(buttons, heroButtonRef);
-  createSearchButtonsMobile(buttons, heroSelectRef);
+  createSearchButtons(buttons);
+  createSearchButtonsMobile(buttons);
   getAndRenderRandomCocktails();
   window.addEventListener('resize', debounceResizedMarkup);
-  cocktailsList.addEventListener('click', e =>
-    onClickLearnMore(e, backdrop, modalWrapper)
-  );
-  letterList.addEventListener('click', e =>
-    onClickSearchLetter(e, markup, cocktailsList)
-  );
-  cocktailsListCloseBtn.addEventListener('click', e =>
-    onClickLearnMoreClose(e, backdrop)
-  );
+  cocktailsList.addEventListener('click', e => onClickLearnMore(e));
+  letterList.addEventListener('click', e => onClickSearchLetter(e, markup));
+  cocktailsListCloseBtn.addEventListener('click', onClickLearnMoreClose);
 }
 
 //Function to update markup amount based on window width

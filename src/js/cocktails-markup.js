@@ -1,6 +1,6 @@
 import * as NoResultsImg from '../images/03-cocktails/noresults.png';
+import * as NoResultsImg2x from '../images/03-cocktails/noresults@2x.png';
 
-console.log(NoResultsImg);
 // Function to create an array of markup
 const cocktailsMarkup = function (cocktailsData) {
   return cocktailsData.data.drinks.map(drink => {
@@ -34,7 +34,7 @@ function markupFilter(cocktailsMarkup) {
 }
 
 function noResultsMarkup() {
-  return `<img src="${NoResultsImg}" alt="No Results"></img>`;
+  return `<img srcset="${NoResultsImg} 1x, ${NoResultsImg2x} 2x" src="${NoResultsImg}" alt="No Results"></img>`;
 }
 
 export { cocktailsMarkup, markupFilter, noResultsMarkup };
