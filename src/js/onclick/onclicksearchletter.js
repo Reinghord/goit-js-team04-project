@@ -1,16 +1,18 @@
-import { errorPopup } from './notifications';
+import { errorPopup } from '../notifications';
+import { getCocktailsByLetter } from '../thecocktailsDB';
+import { cocktailsMarkup, markupFilter } from '../cocktails-markup';
 
 //Function to call during click on Learn more button
 //Fetching full details of cocktail ID
-export async function onClickSearchLetter(e) {
+export async function onClickSearchLetter(e, array, elem) {
   if (e.target.nodeName === 'BUTTON') {
     try {
       const letter = e.target.textContent;
       const response = await getCocktailsByLetter(letter);
       if (response.data.drinks) {
-        markup = cocktailsMarkup(response);
-        const filteredMarkup = markupFilter(markup);
-        return (cocktailsList.innerHTML = filteredMarkup);
+        array = cocktailsMarkup(response);
+        const filteredMarkup = markupFilter(array);
+        return (elem.innerHTML = filteredMarkup);
       }
       //INSERT HERE MARKUP FOR NOT FOUND
       return console.log('problem');
