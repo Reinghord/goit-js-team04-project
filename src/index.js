@@ -30,26 +30,6 @@ import {
   heroSelectRef,
 } from './js/refs';
 
-//Refs and vars
-const {
-  backdrop,
-  modalWrapper,
-  cocktailsList,
-  cocktailsListCloseBtn,
-  letterList,
-  heroButtonRef,
-  heroSelectRef,
-} = {
-  backdrop: document.querySelector('[data-modal]'),
-  modalWrapper: document.querySelector('.modal-wrapper'),
-  cocktailsListCloseBtn: document.querySelector(
-    '.cocktails-learn-more__modal__close__btn'
-  ),
-  cocktailsList: document.querySelector('.cocktails-list'),
-  letterList: document.querySelector('.hero-list-button'),
-  heroButtonRef: document.querySelector('.hero-list-button'),
-  heroSelectRef: document.querySelector('[name="search"]'),
-};
 ////Var to store markup data on init loading or query
 let markup = [];
 ////Var to control listener on window for resize event

@@ -1,5 +1,6 @@
 import * as NoResultsImg from '../images/03-cocktails/noresults.png';
 import * as NoResultsImg2x from '../images/03-cocktails/noresults@2x.png';
+import { titleCocktails } from './refs';
 
 // Function to create an array of markup
 const cocktailsMarkup = function (cocktailsData) {
@@ -34,7 +35,7 @@ function markupFilter(cocktailsMarkup) {
 }
 
 function noResultsMarkup() {
-  return `<img srcset="${NoResultsImg} 1x, ${NoResultsImg2x} 2x" src="${NoResultsImg}" alt="No Results"></img>`;
+  return `<img class="image_no-result" srcset="${NoResultsImg} 1x, ${NoResultsImg2x} 2x" src="${NoResultsImg}" alt="No Results"></img>`;
 }
 
 export { cocktailsMarkup, markupFilter, noResultsMarkup };

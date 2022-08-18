@@ -5,7 +5,7 @@ import {
   markupFilter,
   noResultsMarkup,
 } from '../cocktails-markup';
-import { cocktailsList } from '../refs';
+import { cocktailsList, titleCocktails } from '../refs';
 
 //Function to call during click on Learn more button
 //Fetching full details of cocktail ID
@@ -17,9 +17,10 @@ export async function onClickSearchLetter(e, array) {
       if (response.data.drinks) {
         array = cocktailsMarkup(response);
         const filteredMarkup = markupFilter(array);
+        titleCocktails.innerHTML = `Cocktails`;
         return (cocktailsList.innerHTML = filteredMarkup);
       }
-      //INSERT HERE MARKUP FOR NOT FOUND
+      titleCocktails.innerHTML = `Sorry, we didn't find any cocktail for you`;
       return (cocktailsList.innerHTML = noResultsMarkup());
     } catch (error) {
       errorPopup();
