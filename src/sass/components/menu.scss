@@ -10,6 +10,19 @@
   z-index: 2;
 
   background-color: var(--white);
+  @include mq(desc) {
+    display: none;
+  }
+}
+
+.desc-menu {
+  display: flex;
+  align-items: flex-end;
+  &__link {
+    display: flex;
+    gap: 60px;
+    margin-left: 43px;
+  }
 }
 
 .mob-btn-open,
@@ -21,6 +34,10 @@
   padding: 0;
   border: none;
   background-color: transparent;
+
+  @include mq(desc) {
+    display: none;
+  }
 }
 .mob-btn-close {
   position: absolute;
@@ -44,5 +61,8 @@
   }
   & + & {
     margin-top: 32px;
+  }
+  @include mq(desc) {
+    font-size: 18px;
   }
 }
