@@ -54,7 +54,9 @@ function onLoadingHome() {
   createSearchButtonsMobile(buttons, heroSelectRef);
   getAndRenderRandomCocktails();
   window.addEventListener('resize', debounceResizedMarkup);
-  cocktailsList.addEventListener('click', e => onClickLearnMore(e, backdrop));
+  cocktailsList.addEventListener('click', e =>
+    onClickLearnMore(e, backdrop, modalWrapper)
+  );
   letterList.addEventListener('click', e =>
     onClickSearchLetter(e, markup, cocktailsList)
   );
