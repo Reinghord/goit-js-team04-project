@@ -15,7 +15,7 @@ export async function onClickSearchLetter(e) {
       const letter = e.target.textContent;
       const response = await getCocktailsByLetter(letter);
       if (response.data.drinks) {
-        array = cocktailsMarkup(response);
+        const array = cocktailsMarkup(response);
         localStorage.setItem('markup', JSON.stringify(array));
         const filteredMarkup = markupFilter(array);
         titleCocktails.innerHTML = `Cocktails`;
