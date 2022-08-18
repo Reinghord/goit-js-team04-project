@@ -1,6 +1,7 @@
 import * as NoResultsImg from '../images/03-cocktails/noresults.png';
 import * as NoResultsImg2x from '../images/03-cocktails/noresults@2x.png';
 import { titleCocktails } from './refs';
+import * as icons from '../images/icons.svg';
 
 // Function to create an array of markup
 const cocktailsMarkup = function (cocktailsData) {
@@ -13,7 +14,7 @@ const cocktailsMarkup = function (cocktailsData) {
   <button class="cocktails-btn cocktails-add">
     Add to
     <svg width="21px" height="19px" class="cocktails-svg">
-      <use  href="./images/icons.svg#icon-icon-fav"></use>
+      <use  href="${icons}#icon-icon-fav"></use>
     </svg>
   </button>
     </div>
