@@ -56,9 +56,7 @@ export function createSearchButtonsMobile(buttons) {
   heroSelectRef.innerHTML = markup;
 }
 
-heroButtonToggleClassRef = document.querySelector('.hero-list-button');
-
-heroButtonToggleClassRef.addEventListener('click', buttonColor);
+heroButtonRef.addEventListener('click', buttonColor);
 
 function buttonColor(event) {
   if (event.target.nodeName !== 'BUTTON') {
