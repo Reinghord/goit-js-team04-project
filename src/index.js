@@ -14,6 +14,11 @@ import {
 } from './js/hero';
 import { errorPopup } from './js/notifications';
 import { markupForModal } from './js/cocktailsModalRender';
+import {
+  onClickLearnMore,
+  onClickLearnMoreClose,
+} from './js/onclick/onClickLearnMore';
+import { onClickSearchLetter } from './js/onclick/onclicksearchletter';
 
 //Refs and vars
 const {
@@ -49,10 +54,12 @@ function onLoadingHome() {
   createSearchButtonsMobile(buttons, heroSelectRef);
   getAndRenderRandomCocktails();
   window.addEventListener('resize', debounceResizedMarkup);
-  cocktailsList.addEventListener('click', e => onClickLearnMore(e));
-  letterList.addEventListener('click', e => onClickSearchLetter(e));
+  cocktailsList.addEventListener('click', e => onClickLearnMore(e, backdrop));
+  letterList.addEventListener('click', e =>
+    onClickSearchLetter(e, markup, cocktailsList)
+  );
   cocktailsListCloseBtn.addEventListener('click', e =>
-    onClickLearnMoreClose(e)
+    onClickLearnMoreClose(e, backdrop)
   );
 }
 
@@ -70,49 +77,5 @@ async function getAndRenderRandomCocktails() {
     cocktailsList.innerHTML = filteredMarkup;
   } catch (error) {
     errorPopup();
-  }
-}
-
-//Function to call during click on Learn more button
-//Fetching full details of cocktail ID
-async function onClickLearnMore(e) {
-  if (e.target.dataset.action === 'learn-more') {
-    try {
-      const id = e.target.parentElement.parentElement.id;
-      const response = await getCocktailById(id);
-      const createdMarkup = markupForModal(response);
-      modalWrapper.innerHTML = createdMarkup;
-      document.body.classList.toggle('modal-open');
-      backdrop.classList.toggle('is-hidden');
-    } catch (error) {
-      errorPopup();
-    }
-  }
-}
-
-// Function closing modal window
-
-function onClickLearnMoreClose(e) {
-  document.body.classList.toggle('modal-open');
-  backdrop.classList.toggle('is-hidden');
-}
-
-//Function to call during click on Learn more button
-//Fetching full details of cocktail ID
-async function onClickSearchLetter(e) {
-  if (e.target.nodeName === 'BUTTON') {
-    try {
-      const letter = e.target.textContent;
-      const response = await getCocktailsByLetter(letter);
-      if (response.data.drinks) {
-        markup = cocktailsMarkup(response);
-        const filteredMarkup = markupFilter(markup);
-        return (cocktailsList.innerHTML = filteredMarkup);
-      }
-      //INSERT HERE MARKUP FOR NOT FOUND
-      return console.log('problem');
-    } catch (error) {
-      errorPopup();
-    }
   }
 }
