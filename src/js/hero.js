@@ -1,7 +1,7 @@
 heroButtonRef = document.querySelector('.hero-list-button');
 heroSelectRef = document.querySelector('[name="search"]');
 
-const buttons = [
+export const buttons = [
   'A',
   'B',
   'C',
@@ -39,8 +39,7 @@ const buttons = [
   '9',
   '0',
 ];
-function creatMurcup(buttons) {
-  console.log(buttons);
+export function createSearchButtons(buttons) {
   const markup = buttons
     .map(button => {
       return `<button type = "button" class="hero__button">${button}</button>`;
@@ -49,10 +48,7 @@ function creatMurcup(buttons) {
   heroButtonRef.innerHTML = markup;
 }
 
-creatMurcup(buttons);
-
-function creatMurcupMob(buttons) {
-  console.log(buttons);
+export function createSearchButtonsMobile(buttons) {
   const markup = buttons
     .map(button => {
       return `<option value="${button}">${button}</option>`;
@@ -60,5 +56,3 @@ function creatMurcupMob(buttons) {
     .join('');
   heroSelectRef.innerHTML = markup;
 }
-
-creatMurcupMob(buttons);

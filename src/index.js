@@ -4,6 +4,12 @@ import 'izitoast/dist/css/iziToast.min.css';
 import debounce from 'lodash.debounce';
 import { cocktailsMarkup, markupFilter } from './js/cocktails-markup';
 import getCocktails from './js/thecocktailsDB';
+import './js/header';
+import {
+  buttons,
+  createSearchButtons,
+  createSearchButtonsMobile,
+} from './js/hero';
 
 //Refs and vars
 const { cocktailsList } = {
@@ -19,6 +25,8 @@ onLoadingHome();
 
 //Function to execute on initial page loading OR when returned to Home window for SPA
 function onLoadingHome() {
+  createSearchButtons(buttons);
+  createSearchButtonsMobile(buttons);
   getAndRenderRandomCocktails();
   window.addEventListener('resize', debounceResizedMarkup);
 }
