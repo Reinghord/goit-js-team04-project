@@ -1,0 +1,48 @@
+.is-hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.header__container {
+  display: flex;
+  padding: 20px 20px 0;
+}
+
+.search__form {
+  display: none;
+  position: relative;
+  .mob-menu & {
+    display: block;
+    @include mq(tab) {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+}
+
+.search-btn {
+  position: absolute;
+  display: flex;
+  padding: 10px;
+  border: none;
+  border-right: 1px solid var(--grapefruit);
+  background-color: transparent;
+}
+
+.search__input {
+  margin-bottom: 40px;
+  min-height: 40px;
+  width: 100%;
+  outline: none;
+  border: 1px solid var(--grapefruit);
+  border-radius: 4px;
+  padding: 8px 0 8px 48px;
+}
+
+.checkbox__wrapper {
+  margin-bottom: 40px;
+}
