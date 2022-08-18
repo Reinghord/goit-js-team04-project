@@ -13,10 +13,12 @@ import {
   createSearchButtonsMobile,
 } from './js/hero';
 import { errorPopup } from './js/notifications';
+import { markupForModal } from './js/cocktailsModalRender';
 
 //Refs and vars
 const {
   backdrop,
+  modalWrapper,
   cocktailsList,
   cocktailsListCloseBtn,
   letterList,
@@ -24,6 +26,7 @@ const {
   heroSelectRef,
 } = {
   backdrop: document.querySelector('[data-modal]'),
+  modalWrapper: document.querySelector('.modal-wrapper'),
   cocktailsListCloseBtn: document.querySelector(
     '.cocktails-learn-more__modal__close__btn'
   ),
@@ -77,6 +80,8 @@ async function onClickLearnMore(e) {
     try {
       const id = e.target.parentElement.parentElement.id;
       const response = await getCocktailById(id);
+      const createdMarkup = markupForModal(response);
+      modalWrapper.innerHTML = createdMarkup;
       document.body.classList.toggle('modal-open');
       backdrop.classList.toggle('is-hidden');
     } catch (error) {

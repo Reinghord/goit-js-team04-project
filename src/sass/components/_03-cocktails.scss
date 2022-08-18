@@ -177,10 +177,13 @@ body.modal-open {
     opacity: 0;
 }
 
-.cocktails-learn-more__modal {
+.modal-wrapper{
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
+}
+
+.cocktails-learn-more__modal {
     z-index: 4;
     max-width: 822px;
     width: calc(100% - 20px);
@@ -274,6 +277,10 @@ flex-shrink: 0;
 
     font-size: 16px;
     line-height: 26px;
+    color: var(--gray);
+}
+.ingr-wrapper__ingredient::before {
+    content: "✶";
     color: var(--gray);
 }
 
