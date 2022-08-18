@@ -1,3 +1,5 @@
+import { errorPopup } from './notifications';
+
 //Function to call during click on Learn more button
 //Fetching full details of cocktail ID
 export async function onClickSearchLetter(e) {
