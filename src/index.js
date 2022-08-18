@@ -16,7 +16,18 @@ import {
 } from './js/hero';
 
 //Refs and vars
-const { cocktailsList, letterList, heroButtonRef, heroSelectRef } = {
+const {
+  backdrop,
+  cocktailsList,
+  cocktailsListCloseBtn,
+  letterList,
+  heroButtonRef,
+  heroSelectRef,
+} = {
+  backdrop: document.querySelector('[data-modal]'),
+  cocktailsListCloseBtn: document.querySelector(
+    '.cocktails-learn-more__modal__close__btn'
+  ),
   cocktailsList: document.querySelector('.cocktails-list'),
   letterList: document.querySelector('.hero-list-button'),
   heroButtonRef: document.querySelector('.hero-list-button'),
@@ -46,6 +57,9 @@ function onLoadingHome() {
   window.addEventListener('resize', debounceResizedMarkup);
   cocktailsList.addEventListener('click', e => onClickLearnMore(e));
   letterList.addEventListener('click', e => onClickSearchLetter(e));
+  cocktailsListCloseBtn.addEventListener('click', e =>
+    onClickLearnMoreClose(e)
+  );
 }
 
 //Function to update markup amount based on window width
@@ -72,10 +86,19 @@ async function onClickLearnMore(e) {
     try {
       const id = e.target.parentElement.parentElement.id;
       const response = await getCocktailById(id);
+      document.body.classList.toggle('modal-open');
+      backdrop.classList.toggle('is-hidden');
     } catch (error) {
       errorPopup();
     }
   }
+}
+
+// Function closing modal window
+
+function onClickLearnMoreClose(e) {
+  document.body.classList.toggle('modal-open');
+  backdrop.classList.toggle('is-hidden');
 }
 
 //Function to call during click on Learn more button
