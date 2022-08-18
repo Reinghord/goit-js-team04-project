@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Fetching 10 random cocktails
-export default async function getCocktails() {
+export default async function getRandomCocktails() {
   try {
     const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php';
     const searchParams = new URLSearchParams({

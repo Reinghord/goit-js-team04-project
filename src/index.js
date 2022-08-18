@@ -3,7 +3,7 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import debounce from 'lodash.debounce';
 import { cocktailsMarkup, markupFilter } from './js/cocktails-markup';
-import getCocktails from './js/thecocktailsDB';
+import getRandomCocktails from './js/thecocktailsDB';
 import './js/header';
 import {
   buttons,
@@ -41,7 +41,7 @@ function resizeMarkup() {
 //Function to get random cocktails, prepare markup and render depending on screen size
 async function getAndRenderRandomCocktails() {
   try {
-    const response = await getCocktails();
+    const response = await getRandomCocktails();
     markup = cocktailsMarkup(response);
     const filteredMarkup = markupFilter(markup);
     cocktailsList.innerHTML = filteredMarkup;
