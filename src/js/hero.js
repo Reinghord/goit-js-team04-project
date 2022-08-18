@@ -35,6 +35,7 @@ export const buttons = [
   '8',
   '9',
   '0',
+  '',
 ];
 export function createSearchButtons(buttons, elem) {
   const markup = buttons
@@ -52,4 +53,22 @@ export function createSearchButtonsMobile(buttons, elem) {
     })
     .join('');
   elem.innerHTML = markup;
+}
+
+heroButtonToggleClassRef = document.querySelector('.hero-list-button');
+
+heroButtonToggleClassRef.addEventListener('click', buttonColor);
+
+function buttonColor(event) {
+  if (event.target.nodeName !== 'BUTTON') {
+    return;
+  }
+  event.currentTarget.children;
+  for (const iterator of event.currentTarget.children) {
+    if (iterator.classList.contains('hero-button-color')) {
+      iterator.classList.remove('hero-button-color');
+      break;
+    }
+  }
+  event.target.classList.add('hero-button-color');
 }
