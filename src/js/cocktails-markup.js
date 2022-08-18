@@ -1,11 +1,11 @@
 // Function to create an array of markup
 const cocktailsMarkup = function (cocktailsData) {
   return cocktailsData.data.drinks.map(drink => {
-    return `<li class="cocktails-item" >
+    return `<li class="cocktails-item" id="${drink.idDrink}" >
   <img class="cocktails-img" src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
   <p class="cocktails-name">${drink.strDrink}</p>
 <div class="cocktails-btn__wrapper">  
-  <button class="cocktails-btn cocktails-learn">Learn more</button>
+  <button class="cocktails-btn cocktails-learn" data-action="learn-more">Learn more</button>
   <button class="cocktails-btn cocktails-add">
     Add to
     <svg width="21px" height="19px" class="cocktails-svg">

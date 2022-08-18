@@ -1,14 +1,50 @@
 import axios from 'axios';
 
+const BASE_URL = `https://www.thecocktaildb.com/api/json/v1/1`;
+
 // Fetching 10 random cocktails
-export default async function getRandomCocktails() {
+export async function getRandomCocktails() {
   try {
-    const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php';
     const searchParams = new URLSearchParams({
       f: 'a',
     });
-    const searchResponse = await axios.get(`${BASE_URL}/?${searchParams}`);
-    return searchResponse;
+    return await axios.get(`${BASE_URL}/search.php?${searchParams}`);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+// Fetching cocktails by first letter
+export async function getCocktailsByLetter(letter) {
+  try {
+    const searchParams = new URLSearchParams({
+      f: `${letter}`,
+    });
+    return await axios.get(`${BASE_URL}/search.php?${searchParams}`);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+// Fetching full cocktail detail
+export async function getCocktailById(id) {
+  try {
+    const searchParams = new URLSearchParams({
+      i: `${id}`,
+    });
+    return await axios.get(`${BASE_URL}/lookup.php?${searchParams}`);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+// Fetching cocktails by name
+export async function getCocktailsByName(name) {
+  try {
+    const searchParams = new URLSearchParams({
+      s: `${name}`,
+    });
+    return await axios.get(`${BASE_URL}/search.php?${searchParams}`);
   } catch (error) {
     throw new Error(error);
   }
