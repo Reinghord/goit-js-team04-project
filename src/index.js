@@ -13,6 +13,7 @@ import {
   createSearchButtonsMobile,
 } from './js/hero';
 import { errorPopup } from './js/notifications';
+import { markupForModal } from './js/cocktailsModalRender';
 import {
   onClickLearnMore,
   onClickLearnMoreClose,
@@ -22,6 +23,7 @@ import { onClickSearchLetter } from './js/onclick/onclicksearchletter';
 //Refs and vars
 const {
   backdrop,
+  modalWrapper,
   cocktailsList,
   cocktailsListCloseBtn,
   letterList,
@@ -29,6 +31,7 @@ const {
   heroSelectRef,
 } = {
   backdrop: document.querySelector('[data-modal]'),
+  modalWrapper: document.querySelector('.modal-wrapper'),
   cocktailsListCloseBtn: document.querySelector(
     '.cocktails-learn-more__modal__close__btn'
   ),
