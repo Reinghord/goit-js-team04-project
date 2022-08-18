@@ -7,7 +7,7 @@ import { errorPopup } from '../notifications';
 export async function getAndRenderRandomCocktails() {
   try {
     const response = await getRandomCocktails();
-    markup = cocktailsMarkup(response);
+    const markup = cocktailsMarkup(response);
     localStorage.setItem('markup', JSON.stringify(markup));
     const filteredMarkup = markupFilter(markup);
     cocktailsList.innerHTML = filteredMarkup;
