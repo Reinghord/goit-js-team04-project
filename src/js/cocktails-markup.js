@@ -23,15 +23,16 @@ const cocktailsMarkup = function (cocktailsData) {
 };
 
 // Function to filter amount of objects to render based on screen width
-function markupFilter(cocktailsMarkup) {
+function markupFilter() {
+  const markup = JSON.parse(localStorage.getItem('markup'));
   if (window.screen.width < 768) {
-    const filteredMarkup = cocktailsMarkup.filter((_, index) => index <= 2);
+    const filteredMarkup = markup.filter((_, index) => index <= 2);
     return filteredMarkup.join('');
   } else if (window.screen.width >= 768 && window.screen.width < 1280) {
-    const filteredMarkup = cocktailsMarkup.filter((_, index) => index <= 5);
+    const filteredMarkup = markup.filter((_, index) => index <= 5);
     return filteredMarkup.join('');
   }
-  const filteredMarkup = cocktailsMarkup.filter((_, index) => index <= 8);
+  const filteredMarkup = markup.filter((_, index) => index <= 8);
   return filteredMarkup.join('');
 }
 
