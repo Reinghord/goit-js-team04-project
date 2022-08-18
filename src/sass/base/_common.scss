@@ -5,6 +5,7 @@ body {
 }
 
 $global-list: h1, h2, h3, h4, h5, p, ul;
+
 @each $tag in $global-list {
   #{$tag} {
     margin: 0;
@@ -21,14 +22,17 @@ $global-list: h1, h2, h3, h4, h5, p, ul;
   @media screen and (min-width: $mobile) {
     width: 100vw;
   }
+
   @media screen and (min-width: 480px) {
     width: 480px;
   }
+
   @media screen and (min-width: $tablet) {
     width: $tablet;
     padding-left: 33px;
       padding-right: 33px;
   }
+
   @media screen and (min-width: $desktop) {
     width: $desktop;
     padding-left: 15px;
@@ -47,4 +51,24 @@ a {
 
 button {
   cursor: pointer;
+}
+
+.card-set {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  @include mq(tab) {
+    --card-grid-item: 2;
+    --card-grid-width: 30px;
+    gap: 30px;
+  }
+
+  @include mq(desc) {
+    --card-grid-item: 3;
+  }
+}
+
+.card-set__item {
+  flex-basis: calc(((100% - ((var(--card-grid-item) - 1) * var(--card-grid-width))) / var(--card-grid-item)));
 }
