@@ -3,7 +3,11 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import debounce from 'lodash.debounce';
 import { cocktailsMarkup, markupFilter } from './js/cocktails-markup';
-import getRandomCocktails from './js/thecocktailsDB';
+import {
+  getRandomCocktails,
+  getCocktailsByLetter,
+  getCocktailById,
+} from './js/thecocktailsDB';
 import './js/header';
 import {
   buttons,
@@ -21,6 +25,12 @@ const { cocktailsList, heroButtonRef, heroSelectRef } = {
 let markup = [];
 ////Var to control listener on window for resize event
 const debounceResizedMarkup = debounce(resizeMarkup, 200);
+//Var to call error notification from IziToast library
+const errorPopup = iziToast.error({
+  title: 'Error',
+  message: 'Oops... something went wrong!',
+  position: 'topRight',
+});
 
 //!!! Initial page loading !!!
 onLoadingHome();
@@ -31,6 +41,7 @@ function onLoadingHome() {
   createSearchButtonsMobile(buttons, heroSelectRef);
   getAndRenderRandomCocktails();
   window.addEventListener('resize', debounceResizedMarkup);
+  cocktailsList.addEventListener('click', e => onClickLearnMore(e));
 }
 
 //Function to update markup amount based on window width
@@ -46,10 +57,19 @@ async function getAndRenderRandomCocktails() {
     const filteredMarkup = markupFilter(markup);
     cocktailsList.innerHTML = filteredMarkup;
   } catch {
-    iziToast.error({
-      title: 'Error',
-      message: 'Oops... something went wrong!',
-      position: 'topRight',
-    });
+    errorPopup;
+  }
+}
+
+//Function to call during click on Learn more button
+//Fetching full details of cocktail ID
+async function onClickLearnMore(e) {
+  if (e.target.dataset.action === 'learn-more') {
+    try {
+      const id = e.target.parentElement.parentElement.id;
+      const response = await getCocktailById(id);
+    } catch {
+      errorPopup;
+    }
   }
 }
