@@ -19,6 +19,7 @@ import {
   onClickLearnMoreClose,
 } from './js/onclick/onClickLearnMore';
 import { onClickSearchLetter } from './js/onclick/onclicksearchletter';
+import { getAndRenderRandomCocktails } from './js/onclick/getRandomCocktails';
 //Refs
 import {
   backdrop,
@@ -30,8 +31,6 @@ import {
   heroSelectRef,
 } from './js/refs';
 
-////Var to store markup data on init loading or query
-let markup = [];
 ////Var to control listener on window for resize event
 const debounceResizedMarkup = debounce(resizeMarkup, 200);
 
@@ -45,7 +44,7 @@ function onLoadingHome() {
   getAndRenderRandomCocktails();
   window.addEventListener('resize', debounceResizedMarkup);
   cocktailsList.addEventListener('click', e => onClickLearnMore(e));
-  letterList.addEventListener('click', e => onClickSearchLetter(e, markup));
+  letterList.addEventListener('click', e => onClickSearchLetter(e));
   cocktailsListCloseBtn.addEventListener('click', onClickLearnMoreClose);
 }
 
@@ -55,13 +54,14 @@ function resizeMarkup() {
 }
 
 //Function to get random cocktails, prepare markup and render depending on screen size
-async function getAndRenderRandomCocktails() {
-  try {
-    const response = await getRandomCocktails();
-    markup = cocktailsMarkup(response);
-    const filteredMarkup = markupFilter(markup);
-    cocktailsList.innerHTML = filteredMarkup;
-  } catch (error) {
-    errorPopup();
-  }
-}
+// async function getAndRenderRandomCocktails() {
+//   try {
+//     const response = await getRandomCocktails();
+//     markup = cocktailsMarkup(response);
+//     localStorage.setItem('markup', JSON.stringify(markup));
+//     const filteredMarkup = markupFilter(markup);
+//     cocktailsList.innerHTML = filteredMarkup;
+//   } catch (error) {
+//     errorPopup();
+//   }
+// }
