@@ -6,11 +6,15 @@ const themeNameLight = document.querySelector('.theme-name__light');
 const themeNameDark = document.querySelector('.theme-name__dark');
 const favorite = document.querySelector('.favorite-acctive');
 
+const active = document.querySelectorAll(
+  'div.navigation-wrapper, div.theme-wrapper, form.search__form'
+);
 menuOpenBtn.addEventListener('click', onMenuBtnClick);
 menuCloseBtn.addEventListener('click', onMenuBtnClick);
 
 function onMenuBtnClick() {
   menu.classList.toggle('is-hidden');
+  active.forEach(el => el.classList.toggle('active'));
 }
 
 theme.addEventListener('change', () => {
