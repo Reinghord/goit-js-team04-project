@@ -9,3 +9,11 @@ export const errorPopup = () => {
     position: 'topRight',
   });
 };
+
+export const errorNoLogin = () => {
+  iziToast.error({
+    title: 'Error',
+    message: 'You need to login to do that!',
+    position: 'topRight',
+  });
+};

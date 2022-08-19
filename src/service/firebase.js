@@ -9,7 +9,11 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import { toggleBtnContent } from '../js/firebase/authentication';
-import { getDatabase, ref, set, push, update } from 'firebase/database';
+import { getDatabase, ref, update, onValue } from 'firebase/database';
+import { errorNoLogin, errorPopup } from '../js/notifications';
+import { errorNoLogin } from '../js/notifications';
+import { cocktailsList } from '../js/refs';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -43,7 +47,6 @@ export const signIn = async () => {
       // The signed-in user info.
       const user = result.user;
       // ...
-      console.log(writeUserData());
     })
     .catch(error => {
       // Handle Errors here.
@@ -69,17 +72,58 @@ export function signOutUser() {
 
 onAuthStateChanged(auth, user => {
   toggleBtnContent(user);
+  localStorage.removeItem('favCocktails');
+  if (user) {
+    onValue(
+      ref(db, 'favourite/' + auth.currentUser.uid + '/cocktails/'),
+      snapshot => {
+        const data = snapshot.val();
+      }
+    );
+  }
 });
 
-export function addToFavourite(id) {
+export async function addToFavourite(id) {
   const cocktails = {};
   cocktails[id] = id;
+
+  try {
+    await update(
+      ref(db, 'favourite/' + auth.currentUser.uid + '/cocktails/'),
+      cocktails
+    );
+  } catch {
+    errorNoLogin();
+  }
+}
+
+export function removeFromFavourite(id) {
+  const cocktails = {};
+  cocktails[id] = null;
+
   try {
     update(
       ref(db, 'favourite/' + auth.currentUser.uid + '/cocktails/'),
       cocktails
     );
-  } catch (error) {
-    console.log(error);
+  } catch {
+    errorPopup();
   }
 }
+
+//
+cocktailsList.addEventListener('click', e => {
+  const id = e.target.parentElement.parentElement.id;
+  if (auth.currentUser) {
+    if (e.target.dataset.action === 'favourite') {
+      addToFavourite(id);
+      e.target.dataset.action = 'addedToFavourite';
+      return;
+    }
+    if (e.target.dataset.action === 'addedToFavourite') {
+      removeFromFavourite(id);
+      e.target.dataset.action = 'favourite';
+      return;
+    }
+  }
+});
