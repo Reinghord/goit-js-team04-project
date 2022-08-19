@@ -7,9 +7,17 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
+  browserSessionPersistence,
 } from 'firebase/auth';
 import { toggleBtnContent } from '../js/firebase/authentication';
-import { getDatabase, ref, update, onValue } from 'firebase/database';
+import {
+  getDatabase,
+  ref,
+  update,
+  onValue,
+  child,
+  get,
+} from 'firebase/database';
 import { errorNoLogin, errorPopup } from '../js/notifications';
 import { errorNoLogin } from '../js/notifications';
 import { cocktailsList } from '../js/refs';
@@ -72,15 +80,7 @@ export function signOutUser() {
 
 onAuthStateChanged(auth, user => {
   toggleBtnContent(user);
-  localStorage.removeItem('favCocktails');
-  if (user) {
-    onValue(
-      ref(db, 'favourite/' + auth.currentUser.uid + '/cocktails/'),
-      snapshot => {
-        const data = snapshot.val();
-      }
-    );
-  }
+  getFavouriteCocktails();
 });
 
 export async function addToFavourite(id) {
@@ -117,13 +117,44 @@ cocktailsList.addEventListener('click', e => {
   if (auth.currentUser) {
     if (e.target.dataset.action === 'favourite') {
       addToFavourite(id);
+      getFavouriteCocktails();
       e.target.dataset.action = 'addedToFavourite';
       return;
     }
     if (e.target.dataset.action === 'addedToFavourite') {
       removeFromFavourite(id);
+      e.target.firstElementChild.classList.remove('cocktails-svg--fav');
       e.target.dataset.action = 'favourite';
       return;
     }
   }
 });
+
+export function getFavouriteCocktails() {
+  if (auth.currentUser) {
+    const userId = auth.currentUser.uid;
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `favourite/${userId}/cocktails`))
+      .then(snapshot => {
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          const dataKeys = Object.keys(data);
+          dataKeys.forEach(id => {
+            const query = document.getElementById(`${id}`);
+            if (query) {
+              const btn = query.children[2].children[1];
+              const svg = btn.firstElementChild;
+              console.dir(svg);
+              btn.dataset.action = 'addedToFavourite';
+              svg.classList.add('cocktails-svg--fav');
+            }
+          });
+        } else {
+          console.log('No data available');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+}

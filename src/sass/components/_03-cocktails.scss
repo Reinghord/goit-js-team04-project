@@ -194,12 +194,14 @@
 }
 
 .cocktails-svg {
-  fill: var(--grapefruit);
-  .cocktails-add:hover & {
-    fill: var(--auxOrange);
-  }
+  fill: transparent;
+  transition-property: fill;
+  @include transition;
 }
 
+.cocktails-svg--fav {
+  fill: var(--grapefruit);
+}
 // modal styles
 body.modal-open {
   overflow: hidden;
