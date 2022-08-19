@@ -15,7 +15,7 @@ export function pagination() {
 function loadMore() {
   const markup = JSON.parse(localStorage.getItem('markup'));
   const remainingMarkup = markup.filter(
-    (_, index) => index > cocktailsList.childElementCount
+    (_, index) => index > cocktailsList.childElementCount - 1
   );
   const filteredMarkup = markupFilter(remainingMarkup);
   cocktailsList.insertAdjacentHTML('beforeend', filteredMarkup);

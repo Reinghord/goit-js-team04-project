@@ -51,7 +51,6 @@ async function onLoadingHome() {
   cocktailsList.addEventListener('click', e => onClickLearnMore(e));
   letterList.addEventListener('click', e => onClickSearchLetter(e));
   cocktailsListCloseBtn.addEventListener('click', onClickLearnMoreClose);
-  pagination();
 }
 
 //Function to update markup amount based on window width
