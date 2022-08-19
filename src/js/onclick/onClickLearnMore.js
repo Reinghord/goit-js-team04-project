@@ -13,6 +13,7 @@ export async function onClickLearnMore(e) {
       const createdMarkup = markupForModal(response);
       modalWrapper.innerHTML = createdMarkup;
       checkIngredients(response);
+      console.log(response);
       document.body.classList.toggle('modal-open');
       backdrop.classList.toggle('is-hidden');
       document.addEventListener('click', onClickOutside);
