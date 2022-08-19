@@ -5,7 +5,8 @@ import {
   markupFilter,
   noResultsMarkup,
 } from '../cocktails-markup';
-import { cocktailsList, titleCocktails } from '../refs';
+import { cocktailsList, titleCocktails, btnLoadMore } from '../refs';
+import { pagination } from '../pagination';
 
 //Function to call during click on Learn more button
 //Fetching full details of cocktail ID
@@ -19,9 +20,12 @@ export async function onClickSearchLetter(e) {
         localStorage.setItem('markup', JSON.stringify(array));
         const filteredMarkup = markupFilter(array);
         titleCocktails.innerHTML = `Cocktails`;
-        return (cocktailsList.innerHTML = filteredMarkup);
+        cocktailsList.innerHTML = filteredMarkup;
+        pagination();
+        return;
       }
       titleCocktails.innerHTML = `Sorry, we didn't find any cocktail for you`;
+      btnLoadMore.classList.add('btn_hidden');
       return (cocktailsList.innerHTML = noResultsMarkup());
     } catch (error) {
       errorPopup();
