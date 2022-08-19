@@ -23,8 +23,7 @@ const cocktailsMarkup = function (cocktailsData) {
 };
 
 // Function to filter amount of objects to render based on screen width
-function markupFilter() {
-  const markup = JSON.parse(localStorage.getItem('markup'));
+function markupFilter(markup) {
   if (window.screen.width < 768) {
     const filteredMarkup = markup.filter((_, index) => index <= 2);
     return filteredMarkup.join('');

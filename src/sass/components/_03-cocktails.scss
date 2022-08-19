@@ -381,3 +381,7 @@ body.modal-open {
 .image_no-result {
   margin-inline: auto;
 }
+
+.btn_hidden {
+  @include visually_hidden;
+}
