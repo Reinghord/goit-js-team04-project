@@ -236,6 +236,7 @@ body.modal-open {
   flex-direction: column;
   flex-wrap: wrap;
   overflow: hidden;
+  width: 100%;
 
 }
 
@@ -325,7 +326,11 @@ body.modal-open {
 }
 .img-and-text-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    @media screen and (min-width: $tablet) {
+      flex-direction: row;
+    }
+
 }
 
 .ingr-wrapper__name {
@@ -366,16 +371,24 @@ body.modal-open {
 }
 
 .cocktails-learn-more__modal__btn {
-  width: 185px;
-  height: 48px;
   margin-left: auto;
   margin-right: 28px;
   margin-bottom: 28px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
 
   border-style: none;
   border-radius: 4px;
   background-color: var(--auxOrange);
   color: var(--white);
+
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+ 
+
 }
 
 .image_no-result {

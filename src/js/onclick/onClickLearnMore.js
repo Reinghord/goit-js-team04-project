@@ -3,9 +3,6 @@ import { getCocktailById } from '../thecocktailsDB';
 import { markupForModal } from '../cocktailsModalRender';
 import { backdrop, modalWrapper } from '../refs';
 
-const learnMoreIngredient = document.querySelectorAll('ingr-wrapper__btn');
-const learnMoreLi = document.querySelectorAll('ingr-wrapper__ingredient');
-
 //Function to call during click on Learn more button
 //Fetching full details of cocktail ID
 export async function onClickLearnMore(e) {
@@ -14,10 +11,8 @@ export async function onClickLearnMore(e) {
       const id = e.target.parentElement.parentElement.id;
       const response = await getCocktailById(id);
       const createdMarkup = markupForModal(response);
-      checkIngredients(createdMarkup);
-      console.log(createdMarkup);
       modalWrapper.innerHTML = createdMarkup;
-
+      checkIngredients(response);
       document.body.classList.toggle('modal-open');
       backdrop.classList.toggle('is-hidden');
     } catch (error) {
@@ -25,7 +20,6 @@ export async function onClickLearnMore(e) {
     }
   }
 }
-
 // Function closing modal window
 
 export function onClickLearnMoreClose() {
@@ -35,12 +29,21 @@ export function onClickLearnMoreClose() {
 
 // fucking function checking fucking elements
 
-function checkIngredients() {
-  if (learnMoreIngredient.textContent === 'null') {
-    learnMoreLi.classList.add('@mixin visually-hidden');
-    console.log('test');
+function checkIngredients(response) {
+  const list = document.querySelector('.ingr-wrapper__list');
+  const singleDrink = response.data.drinks[0];
+  const singleDrinkKeys = Object.values(singleDrink);
+  let newMassive = [];
+  for (let i = 17; i < singleDrinkKeys.length; i++) {
+    if (i < 31) {
+      newMassive.push(singleDrinkKeys[i]);
+    }
   }
-  return;
+  const filteredMassive = newMassive.filter(item => item);
+  const filteredMarkup = filteredMassive
+    .map(ingr => {
+      return `<li class="ingr-wrapper__ingredient"><button class="ingr-wrapper__btn">${ingr}</button></li>`;
+    })
+    .join('');
+  list.innerHTML = filteredMarkup;
 }
-
-export { checkIngredients };
