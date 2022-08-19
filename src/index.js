@@ -22,6 +22,8 @@ import { onClickSearchLetter } from './js/onclick/onclicksearchletter';
 import { getAndRenderRandomCocktails } from './js/onclick/getRandomCocktails';
 import { pagination } from './js/pagination';
 import './js/firebase/authentication';
+import './service/firebase';
+import './js/firebase/addToFavourite';
 //Refs
 import {
   backdrop,
