@@ -1,73 +1,67 @@
 <div class="container header__container">
-  <div class="navigation-wrapper">
-    <a href="/" class="header__logo">
-      <picture>
-        <source
-          srcset="
-            ./images/logo-mob-x1-min.png 1x,
-            ./images/logo-mob-x2-min.png 2x
-          "
-          media="(max-width: 767px)"
-        />
-        <source
-          srcset="
-            ./images/logo-tab-x1-min.png 1x,
-            ./images/logo-tab-x2-min.png 2x
-          "
-          media="(min-width: 768px)"
-        />
-        <source />
-        <img
-          class="logo-cocktails"
-          src="./images/logo-mob-x1-min.png"
-          alt="logo"
-          widt="156"
-        />
-      </picture>
-    </a>
-    <nav class="desc-menu">
-      <ul class="desc-menu__link">
-        <li><a href="" class="mob-nav__link">Home</a></li>
-        <li>
-          <button href="" class="mob-nav__link favorite-acctive">
-            Favorite
-          </button>
-          <div class="favorite-wrapper favorite-wrapper__close">
-            <a href="" class="favorite-link">Favorite cocktails</a>
-            <a href="" class="favorite-link">Favorite ingredients</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </div>
-  <div class="features-wrapper">
-    <form class="search__form">
-      <button class="search-btn" type="submit">
+  <a href="/" class="header__logo">
+    <picture>
+      <source
+        srcset="
+          ./images/logo-mob-x1-min.png 1x,
+          ./images/logo-mob-x2-min.png 2x
+        "
+        media="(max-width: 767px)"
+      />
+      <source
+        srcset="
+          ./images/logo-tab-x1-min.png 1x,
+          ./images/logo-tab-x2-min.png 2x
+        "
+        media="(min-width: 768px)"
+      />
+      <source />
+      <img
+        class="logo-cocktails"
+        src="./images/logo-mob-x1-min.png"
+        alt="logo"
+        width="156"
+      />
+    </picture>
+  </a>
+  <div class="desctop-wrapper">
+    <div class="navigation-wrapper">
+      <nav class="desc-menu">
+        <ul class="desc-menu__link">
+          <li><a href="" class="mob-nav__link">Home</a></li>
+          <li>
+            <button href="/" class="mob-nav__link favorite-acctive">
+              Favorite
+            </button>
+            <div class="favorite-wrapper favorite-wrapper__close">
+              <a href="/" class="favorite-link">Favorite cocktails</a>
+              <a href="/" class="favorite-link">Favorite ingredients</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="features-wrapper">
+      <form class="search__form">
         <svg class="search__icon" width="20" height="20">
           <use href="./images/icons.svg#icon-icon-search"></use>
         </svg>
-      </button>
-      <input
-        class="search__input"
-        type="text"
-        name="text"
-        autocomplete="name"
-        placeholder="Search"
-      />
-    </form>
+        <input class="search__input" type="text" placeholder="Search" />
+      </form>
 
-    <div class="theme-wrapper">
-      <span class="theme-name__light theme-acctive">Light</span>
-      <input type="checkbox" class="checkbox" id="checkbox" />
-      <label for="checkbox" class="label">
-        <div class="ball"></div>
-      </label>
-      <span class="theme-name__dark">Dark</span>
+      <div class="theme-wrapper">
+        <span class="theme-name__light theme-acctive">Light</span>
+        <input type="checkbox" class="checkbox" id="checkbox" />
+        <label for="checkbox" class="label">
+          <div class="ball"></div>
+        </label>
+        <span class="theme-name__dark">Dark</span>
 
-      <button class="btn-login">logIn</button>
+        <button class="btn-login">logIn</button>
+      </div>
     </div>
   </div>
-
   <button type="button" class="mob-btn-open" aria-label="mobile menu button">
     <svg class="mob-btn__icon" width="30" height="16">
       <use class="mob-btn__open" href="./images/icons.svg#icon-menu-1"></use>
@@ -80,33 +74,5 @@
         <use href="./images/icons.svg#icon-close"></use>
       </svg>
     </button>
-    <div class="mobile-menu"></div>
-
-    <div>
-      <input type="checkbox" class="checkbox" id="checkbox" />
-      <label for="checkbox" class="label">
-        <div class="ball"></div>
-      </label>
-    </div>
-
-    <form class="search__form">
-      <button class="search-btn" type="submit">
-        <svg class="search__icon" width="20" height="20">
-          <use href="./images/icons.svg#icon-icon-search"></use>
-        </svg>
-      </button>
-      <input
-        class="search__input"
-        type="text"
-        name="text"
-        autocomplete="name"
-        placeholder="Search"
-      />
-    </form>
-    <nav class="mob-nav">
-      <a href="" class="mob-nav__link">Home</a>
-      <a href="" class="mob-nav__link">Favorite cocktails</a>
-      <a href="" class="mob-nav__link">Favorite ingredients</a>
-    </nav>
   </div>
 </div>
