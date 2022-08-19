@@ -115,6 +115,9 @@ justify-content: space-between;
   font-family: var(--fontSecondary);
   font-size: 14px;
   line-height: 1.71;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 250ms;
+    transition-property: background-color;
   
   text-align: center;
   letter-spacing: 0.02em;
@@ -230,8 +233,10 @@ body.modal-open {
 
 .modal-wrapper {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   overflow: hidden;
+
 }
 
 .cocktails-learn-more__modal {
@@ -248,7 +253,7 @@ body.modal-open {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   background-color: var(--white);
-
+    
   // @media screen and (max-height: 609px) {
   //     transform: translate(-50%, 0) scale(1);
   // }
@@ -296,6 +301,11 @@ body.modal-open {
   overflow: hidden;
   display: flex;
   align-items: center;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 250ms;
+    transition-property: fill;
+  &:hover,
+  &:focus {fill: var(--auxOrange);}
 }
 
 .cocktails-learn-more__modal__icon {
@@ -312,6 +322,10 @@ body.modal-open {
 .ingr-wrapper {
   margin-top: 40px;
   margin-left: 32px;
+}
+.img-and-text-wrapper {
+    display: flex;
+    flex-direction: row;
 }
 
 .ingr-wrapper__name {
