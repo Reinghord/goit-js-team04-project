@@ -9,6 +9,7 @@ export const {
   heroSelectRef,
   titleCocktails,
   btnLoadMore,
+  btnLogIn,
 } = {
   backdrop: document.querySelector('[data-modal]'),
   modalWrapper: document.querySelector('.modal-wrapper'),
@@ -21,4 +22,5 @@ export const {
   heroSelectRef: document.querySelector('[name="search"]'),
   titleCocktails: document.querySelector('.title-cocktails'),
   btnLoadMore: document.querySelector('.btn_load-more'),
+  btnLogIn: document.querySelector('.btn-login'),
 };
