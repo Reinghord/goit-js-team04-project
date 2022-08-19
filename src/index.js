@@ -20,6 +20,7 @@ import {
 } from './js/onclick/onClickLearnMore';
 import { onClickSearchLetter } from './js/onclick/onclicksearchletter';
 import { getAndRenderRandomCocktails } from './js/onclick/getRandomCocktails';
+import { pagination } from './js/pagination';
 //Refs
 import {
   backdrop,
@@ -29,6 +30,7 @@ import {
   letterList,
   heroButtonRef,
   heroSelectRef,
+  btnLoadMore,
 } from './js/refs';
 
 ////Var to control listener on window for resize event
@@ -38,14 +40,15 @@ const debounceResizedMarkup = debounce(resizeMarkup, 200);
 onLoadingHome();
 
 //Function to execute on initial page loading OR when returned to Home window for SPA
-function onLoadingHome() {
+async function onLoadingHome() {
   createSearchButtons(buttons);
   createSearchButtonsMobile(buttons);
-  getAndRenderRandomCocktails();
-  window.addEventListener('resize', debounceResizedMarkup);
+  await getAndRenderRandomCocktails();
+  // window.addEventListener('resize', debounceResizedMarkup);
   cocktailsList.addEventListener('click', e => onClickLearnMore(e));
   letterList.addEventListener('click', e => onClickSearchLetter(e));
   cocktailsListCloseBtn.addEventListener('click', onClickLearnMoreClose);
+  pagination();
 }
 
 //Function to update markup amount based on window width
