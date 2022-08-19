@@ -12,6 +12,7 @@ export async function onClickLearnMore(e) {
       const response = await getCocktailById(id);
       const createdMarkup = markupForModal(response);
       modalWrapper.innerHTML = createdMarkup;
+      checkIngredients(response);
       document.body.classList.toggle('modal-open');
       backdrop.classList.toggle('is-hidden');
     } catch (error) {
@@ -19,10 +20,30 @@ export async function onClickLearnMore(e) {
     }
   }
 }
-
 // Function closing modal window
 
 export function onClickLearnMoreClose() {
   document.body.classList.toggle('modal-open');
   backdrop.classList.toggle('is-hidden');
+}
+
+// fucking function checking fucking elements
+
+function checkIngredients(response) {
+  const list = document.querySelector('.ingr-wrapper__list');
+  const singleDrink = response.data.drinks[0];
+  const singleDrinkKeys = Object.values(singleDrink);
+  let newMassive = [];
+  for (let i = 17; i < singleDrinkKeys.length; i++) {
+    if (i < 31) {
+      newMassive.push(singleDrinkKeys[i]);
+    }
+  }
+  const filteredMassive = newMassive.filter(item => item);
+  const filteredMarkup = filteredMassive
+    .map(ingr => {
+      return `<li class="ingr-wrapper__ingredient"><button class="ingr-wrapper__btn">${ingr}</button></li>`;
+    })
+    .join('');
+  list.innerHTML = filteredMarkup;
 }
