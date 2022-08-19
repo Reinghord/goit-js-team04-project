@@ -11,7 +11,7 @@ const cocktailsMarkup = function (cocktailsData) {
   <p class="cocktails-name">${drink.strDrink}</p>
 <div class="cocktails-btn__wrapper">  
   <button class="cocktails-btn cocktails-learn" data-action="learn-more">Learn more</button>
-  <button class="cocktails-btn cocktails-add">
+  <button class="cocktails-btn cocktails-add" data-action="favourite">
     Add to
     <svg width="21px" height="19px" class="cocktails-svg">
       <use  href="${icons}#icon-icon-fav"></use>
