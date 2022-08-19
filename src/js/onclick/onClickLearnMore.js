@@ -15,11 +15,33 @@ export async function onClickLearnMore(e) {
       checkIngredients(response);
       document.body.classList.toggle('modal-open');
       backdrop.classList.toggle('is-hidden');
+      document.addEventListener('click', onClickOutside);
+      document.addEventListener('keydown', onCloseEsc);
     } catch (error) {
       errorPopup();
     }
   }
 }
+
+// function to close modal on esc
+function onCloseEsc(e) {
+  if (e.code === 'Escape') {
+    document.body.classList.remove('modal-open');
+    backdrop.classList.add('is-hidden');
+    document.removeEventListener('keydown', onCloseEsc);
+  }
+}
+
+// function to close on clock outside
+
+function onClickOutside(e) {
+  if (e.target === backdrop) {
+    document.body.classList.remove('modal-open');
+    backdrop.classList.add('is-hidden');
+    document.removeEventListener('click', onClickOutside);
+  }
+}
+
 // Function closing modal window
 
 export function onClickLearnMoreClose() {
@@ -42,7 +64,7 @@ function checkIngredients(response) {
   const filteredMassive = newMassive.filter(item => item);
   const filteredMarkup = filteredMassive
     .map(ingr => {
-      return `<li class="ingr-wrapper__ingredient"><button class="ingr-wrapper__btn">${ingr}</button></li>`;
+      return `<li class="ingr-wrapper__ingredient"><button class="ingr-wrapper__btn">✶ ${ingr}</button></li>`;
     })
     .join('');
   list.innerHTML = filteredMarkup;
