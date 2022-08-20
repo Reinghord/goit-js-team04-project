@@ -1,13 +1,13 @@
 import { signIn, signOutUser } from '../../service/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
 import { btnLogIn } from '../refs';
 
 btnLogIn.addEventListener('click', onLoginClick);
 
-function onLoginClick(e) {
+async function onLoginClick(e) {
   let id = e.target.textContent;
   if (id === 'logIn') {
-    return signIn();
+    await signIn();
+    return;
   }
   signOutUser();
   return;

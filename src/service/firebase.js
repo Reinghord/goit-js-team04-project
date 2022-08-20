@@ -7,8 +7,21 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
+  browserSessionPersistence,
 } from 'firebase/auth';
 import { toggleBtnContent } from '../js/firebase/authentication';
+import {
+  getDatabase,
+  ref,
+  update,
+  onValue,
+  child,
+  get,
+} from 'firebase/database';
+import { errorNoLogin, errorPopup } from '../js/notifications';
+import { errorNoLogin } from '../js/notifications';
+import { cocktailsList } from '../js/refs';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,6 +35,8 @@ const firebaseConfig = {
   messagingSenderId: '723891192902',
   appId: '1:723891192902:web:56cac8a0bb673caa127647',
   measurementId: 'G-FPFJ79VJJ6',
+  databaseURL:
+    'https://js-project-69603-default-rtdb.europe-west1.firebasedatabase.app/',
 };
 
 // Initialize Firebase
@@ -29,9 +44,10 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
+const db = getDatabase();
 
-export const signIn = () => {
-  signInWithPopup(auth, provider)
+export const signIn = async () => {
+  await signInWithPopup(auth, provider)
     .then(result => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -64,4 +80,84 @@ export function signOutUser() {
 
 onAuthStateChanged(auth, user => {
   toggleBtnContent(user);
+  getFavouriteCocktails();
 });
+
+export async function addToFavourite(id) {
+  const cocktails = {};
+  cocktails[id] = id;
+
+  try {
+    await update(
+      ref(db, 'favourite/' + auth.currentUser.uid + '/cocktails/'),
+      cocktails
+    );
+  } catch {
+    errorNoLogin();
+  }
+}
+
+export function removeFromFavourite(id) {
+  const cocktails = {};
+  cocktails[id] = null;
+
+  try {
+    update(
+      ref(db, 'favourite/' + auth.currentUser.uid + '/cocktails/'),
+      cocktails
+    );
+  } catch {
+    errorPopup();
+  }
+}
+
+//LEGACY CODE
+cocktailsList.addEventListener('click', e => {
+  console.dir(e.target);
+  const id = e.target.parentElement.parentElement.id;
+  if (auth.currentUser) {
+    console.log('Клик после логина');
+    if (e.target.dataset.action === 'favourite') {
+      console.log('Клик до лайка');
+      addToFavourite(id);
+      getFavouriteCocktails();
+      e.target.dataset.action = 'addedToFavourite';
+      return;
+    }
+    if (e.target.dataset.action === 'addedToFavourite') {
+      console.log('Клик после лайка');
+      removeFromFavourite(id);
+      e.target.firstElementChild.classList.remove('cocktails-svg--fav');
+      e.target.dataset.action = 'favourite';
+      return;
+    }
+  }
+});
+
+export function getFavouriteCocktails() {
+  if (auth.currentUser) {
+    const userId = auth.currentUser.uid;
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, `favourite/${userId}/cocktails`))
+      .then(snapshot => {
+        if (snapshot.exists()) {
+          const data = snapshot.val();
+          const dataKeys = Object.keys(data);
+          dataKeys.forEach(id => {
+            const query = document.getElementById(`${id}`);
+            if (query) {
+              const btn = query.children[2].children[1];
+              const svg = btn.firstElementChild;
+              btn.dataset.action = 'addedToFavourite';
+              svg.classList.add('cocktails-svg--fav');
+            }
+          });
+        } else {
+          console.log('No data available');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+}

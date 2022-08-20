@@ -4,13 +4,27 @@
   --fontSecondary: 'Roboto', sans-serif;
 
   //COLORS
+  // --black: #202025;
+  // --grapefruit: #fd5103;
+  // --gray: #5f6775;
+  // --white: #fcfcfc;
+  // --auxOrange: #fe7031;
+
+  // CARD-SET
+  --card-grid-item: 1;
+  --card-grid-width: 20px;
+}
+.theme-light {
   --black: #202025;
   --grapefruit: #fd5103;
   --gray: #5f6775;
   --white: #fcfcfc;
   --auxOrange: #fe7031;
-
-  // CARD-SET
-  --card-grid-item: 1;
-  --card-grid-width: 20px;
+}
+.theme-dark {
+  --black: #fff;
+  --grapefruit: #fd5103;
+  --gray: #5f6775;
+  --white: #202025;
+  --auxOrange: #fe7031;
 }

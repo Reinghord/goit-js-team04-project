@@ -22,6 +22,8 @@ import { onClickSearchLetter } from './js/onclick/onclicksearchletter';
 import { getAndRenderRandomCocktails } from './js/onclick/getRandomCocktails';
 import { pagination } from './js/pagination';
 import './js/firebase/authentication';
+import { getFavouriteCocktails } from './service/firebase';
+import './js/firebase/addToFavourite';
 //Refs
 import {
   backdrop,
@@ -49,7 +51,6 @@ async function onLoadingHome() {
   cocktailsList.addEventListener('click', e => onClickLearnMore(e));
   letterList.addEventListener('click', e => onClickSearchLetter(e));
   cocktailsListCloseBtn.addEventListener('click', onClickLearnMoreClose);
-  pagination();
 }
 
 //Function to update markup amount based on window width
