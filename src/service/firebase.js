@@ -113,19 +113,15 @@ export function removeFromFavourite(id) {
 
 //LEGACY CODE
 cocktailsList.addEventListener('click', e => {
-  console.dir(e.target);
   const id = e.target.parentElement.parentElement.id;
   if (auth.currentUser) {
-    console.log('Клик после логина');
     if (e.target.dataset.action === 'favourite') {
-      console.log('Клик до лайка');
       addToFavourite(id);
       getFavouriteCocktails();
       e.target.dataset.action = 'addedToFavourite';
       return;
     }
     if (e.target.dataset.action === 'addedToFavourite') {
-      console.log('Клик после лайка');
       removeFromFavourite(id);
       e.target.firstElementChild.classList.remove('cocktails-svg--fav');
       e.target.dataset.action = 'favourite';

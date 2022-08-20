@@ -10,6 +10,8 @@ export const {
   titleCocktails,
   btnLoadMore,
   btnLogIn,
+  btnFavCoks,
+  btnFavIngr,
 } = {
   backdrop: document.querySelector('[data-modal]'),
   modalWrapper: document.querySelector('.modal-wrapper'),
@@ -23,4 +25,6 @@ export const {
   titleCocktails: document.querySelector('.title-cocktails'),
   btnLoadMore: document.querySelector('.btn_load-more'),
   btnLogIn: document.querySelector('.btn-login'),
+  btnFavCoks: document.querySelector('[data-action="link-fav-cock"]'),
+  btnFavIngr: document.querySelector('[data-action="link-fav-ingr"]'),
 };
