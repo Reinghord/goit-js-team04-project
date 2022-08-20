@@ -1,3 +1,5 @@
+import * as icons from '../images/icons.svg';
+
 function markupForModal(response) {
   return response.data.drinks
     .map(drink => {
@@ -17,8 +19,10 @@ function markupForModal(response) {
       <h3 class="instructions__name">Instructions:</h3>
       <p class="instructions__text">${drink.strInstructions}</p>
     </div>
-    <button type="button" class="cocktails-learn cocktails-learn-more__modal__btn">
-      Add to favorite
+    <button type="button" class="cocktails-btn cocktails-add" data-action="favourite" data-id="${drink.idDrink}">
+      <svg width="21px" height="19px" class="cocktails-svg">
+      <use  href="${icons}#icon-icon-fav"></use>
+    </svg>
     </button>
 `;
     })
