@@ -1,7 +1,11 @@
 //Refs
 export const {
   backdrop,
+  modalIngr,
+  modalIngrBtnClose,
+  modalIngrWrapper,
   modalWrapper,
+  ingrCloseBnt,
   cocktailsList,
   cocktailsListCloseBtn,
   letterList,
@@ -14,7 +18,13 @@ export const {
   btnFavIngr,
 } = {
   backdrop: document.querySelector('[data-modal]'),
+  modalIngr: document.querySelector('.cocktails-ingredients-modal'),
+  modalIngrBtnClose: document.querySelector('.ingr-close-btn'),
+  modalIngrWrapper: document.querySelector(
+    '.cocktails-ingredients-modal__wrapper'
+  ),
   modalWrapper: document.querySelector('.modal-wrapper'),
+  ingrCloseBnt: document.querySelector('.ingr-close-btn'),
   cocktailsListCloseBtn: document.querySelector(
     '.cocktails-learn-more__modal__close__btn'
   ),

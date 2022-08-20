@@ -327,10 +327,10 @@ body.modal-open {
 }
 
 
-// .ingr-wrapper__ingredient::before {
-//   content: '✶';
-//   color: var(--gray);
-// }
+.ingr-wrapper__ingredient::before {
+  content: '✶';
+  color: var(--gray);
+}
 
 .ingr-wrapper__btn{
   font-size: 16px;
@@ -512,6 +512,7 @@ body.modal-open {
 }
 .cocktails-learn-more__modal__ingredient__btn{
   margin-left: auto;
+  display: block;
   margin-right: 28px;
   margin-bottom: 28px;
 

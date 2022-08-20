@@ -24,4 +24,26 @@ function markupForModal(response) {
     })
     .join('');
 }
-export { markupForModal };
+
+function markupIngredients(ingrResponse) {
+  return ingrResponse.data.ingredients
+    .map(ingr => {
+      return `<h3 class="cocktails-ingredients-modal__title">${ingr.strIngredient}</h3>
+      <h4 class="cocktails-ingredients-modal__subtitle">${ingr.strType}</h4>
+      <p class="cocktails-ingredients-modal__text">${ingr.strDescription}</p>
+      <ul class="cocktails-ingredients-modal__list">
+        <li class="cocktails-ingredients-modal__item">✶ Type: ${ingr.strType}</li>
+        <li class="cocktails-ingredients-modal__item">
+          ✶ Country of origin: No information available!
+        </li>
+        <li class="cocktails-ingredients-modal__item">
+          ✶ Alcohol by volume: ${ingr.strABV}%
+        </li>
+        <li class="cocktails-ingredients-modal__item">
+          ✶ Flavour: No informanion available!
+        </li>
+      </ul>`;
+    })
+    .join('');
+}
+export { markupForModal, markupIngredients };
