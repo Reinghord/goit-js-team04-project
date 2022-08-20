@@ -1,7 +1,13 @@
 import { errorPopup } from '../notifications';
 import { getCocktailById, getIngredientIncsructions } from '../thecocktailsDB';
-import { markupForModal } from '../cocktailsModalRender';
-import { backdrop, modalWrapper } from '../refs';
+import { markupForModal, markupIngredients } from '../cocktailsModalRender';
+import {
+  backdrop,
+  modalWrapper,
+  modalIngrWrapper,
+  modalIngr,
+  ingrCloseBnt,
+} from '../refs';
 
 //Function to call during click on Learn more button
 //Fetching full details of cocktail ID
@@ -18,19 +24,27 @@ export async function onClickLearnMore(e) {
       document.addEventListener('click', onClickOutside);
       document.addEventListener('keydown', onCloseEsc);
       modalWrapper.addEventListener('click', onClickIngr);
+      ingrCloseBnt.addEventListener('click', onCloseIngrModal);
     } catch (error) {
       errorPopup();
     }
   }
 }
 
-const ingrBtns = document.querySelectorAll('.ingr-wrapper__btn');
-// ingrBtns.addEventListener('click', e => {
-//   console.log(e.target);
-// });
-
-function onClickIngr(e) {
-  console.log(e.target);
+//   modalIngr,
+// modalIngrBtnClose,
+async function onClickIngr(e) {
+  if (e.target.className === 'ingr-wrapper__btn') {
+    const name = e.target.innerHTML;
+    const ingrResponse = await getIngredientIncsructions(name);
+    const ingrMarkup = markupIngredients(ingrResponse);
+    modalIngrWrapper.innerHTML = ingrMarkup;
+    modalIngr.classList.toggle('is-hidden');
+  }
+}
+// function on close ingr modal
+function onCloseIngrModal(e) {
+  modalIngr.classList.toggle('is-hidden');
 }
 
 // function to close modal on esc
@@ -38,6 +52,7 @@ function onCloseEsc(e) {
   if (e.code === 'Escape') {
     document.body.classList.remove('modal-open');
     backdrop.classList.add('is-hidden');
+    modalIngr.classList.add('is-hidden');
     document.removeEventListener('keydown', onCloseEsc);
   }
 }
@@ -48,6 +63,7 @@ function onClickOutside(e) {
   if (e.target === backdrop) {
     document.body.classList.remove('modal-open');
     backdrop.classList.add('is-hidden');
+    modalIngr.classList.add('is-hidden');
     document.removeEventListener('click', onClickOutside);
   }
 }
@@ -74,7 +90,7 @@ function checkIngredients(response) {
   const filteredMassive = newMassive.filter(item => item);
   const filteredMarkup = filteredMassive
     .map(ingr => {
-      return `<li class="ingr-wrapper__ingredient"><button class="ingr-wrapper__btn">✶ ${ingr}</button></li>`;
+      return `<li class="ingr-wrapper__ingredient"><button type="button" class="ingr-wrapper__btn">${ingr}</button></li>`;
     })
     .join('');
   list.innerHTML = filteredMarkup;

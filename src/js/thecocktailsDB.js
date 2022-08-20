@@ -51,4 +51,13 @@ export async function getCocktailsByName(name) {
 }
 
 // Function for fetching info about ingredient
-export async function getIngredientIncsructions() {}
+export async function getIngredientIncsructions(name) {
+  try {
+    const searchParams = new URLSearchParams({
+      i: `${name}`,
+    });
+    return await axios.get(`${BASE_URL}/search.php?${searchParams}`);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
