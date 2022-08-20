@@ -81,6 +81,7 @@ export function signOutUser() {
 
 onAuthStateChanged(auth, user => {
   toggleBtnContent(user);
+  removeFavIconsClass();
   getFavouriteCocktails(renderFavouriteCocktailsIcon);
 });
 
@@ -115,19 +116,24 @@ export function removeFromFavourite(id) {
 //LEGACY CODE
 cocktailsList.addEventListener('click', e => {
   const id = e.target.parentElement.parentElement.id;
-  if (auth.currentUser) {
-    if (e.target.dataset.action === 'favourite') {
+
+  if (e.target.dataset.action === 'favourite') {
+    if (auth.currentUser) {
       addToFavourite(id);
       getFavouriteCocktails(renderFavouriteCocktailsIcon);
       e.target.dataset.action = 'addedToFavourite';
       return;
     }
-    if (e.target.dataset.action === 'addedToFavourite') {
+    errorNoLogin();
+  }
+  if (e.target.dataset.action === 'addedToFavourite') {
+    if (auth.currentUser) {
       removeFromFavourite(id);
       e.target.firstElementChild.classList.remove('cocktails-svg--fav');
       e.target.dataset.action = 'favourite';
       return;
     }
+    errorNoLogin();
   }
 });
 
@@ -161,4 +167,11 @@ export function renderFavouriteCocktailsIcon(snapshot) {
       return;
     }
   }
+}
+
+function removeFavIconsClass() {
+  const query = document.querySelectorAll('.cocktails-svg--fav');
+  query.forEach(element => {
+    element.classList.remove('cocktails-svg--fav');
+  });
 }
