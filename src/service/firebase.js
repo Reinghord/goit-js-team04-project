@@ -44,7 +44,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
-const auth = getAuth();
+export const auth = getAuth();
 const db = getDatabase();
 
 export const signIn = async () => {

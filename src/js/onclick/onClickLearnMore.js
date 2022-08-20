@@ -8,7 +8,15 @@ import {
   modalIngr,
   ingrCloseBnt,
 } from '../refs';
-
+import {
+  onClickAddFavModal,
+  renderFavouriteCocktailsIconModal,
+} from './onClickAddFavModal';
+import {
+  getFavouriteCocktails,
+  renderFavouriteCocktailsIcon,
+} from '../../service/firebase';
+import { onClick } from './onClickAddFavModal';
 //Function to call during click on Learn more button
 //Fetching full details of cocktail ID
 export async function onClickLearnMore(e) {
@@ -25,6 +33,7 @@ export async function onClickLearnMore(e) {
       document.addEventListener('keydown', onCloseEsc);
       modalWrapper.addEventListener('click', onClickIngr);
       ingrCloseBnt.addEventListener('click', onCloseIngrModal);
+      getFavouriteCocktails(renderFavouriteCocktailsIconModal);
     } catch (error) {
       errorPopup();
     }
@@ -73,6 +82,7 @@ function onClickOutside(e) {
 export function onClickLearnMoreClose() {
   document.body.classList.toggle('modal-open');
   backdrop.classList.toggle('is-hidden');
+  getFavouriteCocktails(renderFavouriteCocktailsIcon);
 }
 
 // fucking function checking fucking elements
