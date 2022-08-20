@@ -17,6 +17,10 @@ import {
   renderFavouriteCocktailsIcon,
 } from '../../service/firebase';
 import { onClick } from './onClickAddFavModal';
+import {
+  getFavouriteIngredients,
+  renderFavouriteIngredientsIconModal,
+} from './onClickAddFavIngrModal';
 //Function to call during click on Learn more button
 //Fetching full details of cocktail ID
 export async function onClickLearnMore(e) {
@@ -51,6 +55,7 @@ async function onClickIngr(e) {
     modalIngrWrapper.innerHTML = ingrMarkup;
     modalIngr.classList.toggle('is-hidden');
     modalWrapper.classList.add('is-hidden');
+    getFavouriteIngredients(renderFavouriteIngredientsIconModal);
   }
 }
 // function on close ingr modal
