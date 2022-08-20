@@ -14,7 +14,7 @@ function markupForModal(response) {
       </div>
     </div>
     <div class="instructions">
-      <h3 class="instructions__name">Instractions:</h3>
+      <h3 class="instructions__name">Instructions:</h3>
       <p class="instructions__text">${drink.strInstructions}</p>
     </div>
     <button type="button" class="cocktails-learn cocktails-learn-more__modal__btn">

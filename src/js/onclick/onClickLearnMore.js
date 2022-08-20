@@ -1,5 +1,5 @@
 import { errorPopup } from '../notifications';
-import { getCocktailById } from '../thecocktailsDB';
+import { getCocktailById, getIngredientIncsructions } from '../thecocktailsDB';
 import { markupForModal } from '../cocktailsModalRender';
 import { backdrop, modalWrapper } from '../refs';
 
@@ -13,15 +13,24 @@ export async function onClickLearnMore(e) {
       const createdMarkup = markupForModal(response);
       modalWrapper.innerHTML = createdMarkup;
       checkIngredients(response);
-      console.log(response);
       document.body.classList.toggle('modal-open');
       backdrop.classList.toggle('is-hidden');
       document.addEventListener('click', onClickOutside);
       document.addEventListener('keydown', onCloseEsc);
+      modalWrapper.addEventListener('click', onClickIngr);
     } catch (error) {
       errorPopup();
     }
   }
+}
+
+const ingrBtns = document.querySelectorAll('.ingr-wrapper__btn');
+// ingrBtns.addEventListener('click', e => {
+//   console.log(e.target);
+// });
+
+function onClickIngr(e) {
+  console.log(e.target);
 }
 
 // function to close modal on esc
