@@ -49,7 +49,7 @@ function markupIngredients(ingrResponse) {
       </ul>
           <button
       type="button"
-      class="cocktails-btn cocktails-add" data-action="favouriteIngr" data-id="${ingr.idIngredient}"
+      class="cocktails-btn cocktails-add" data-action="favouriteIngr" data-idingr="${ingr.idIngredient}"
     >
       <svg width="21px" height="19px" class="cocktails-svg">
       <use  href="${icons}#icon-icon-fav"></use>
