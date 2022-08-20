@@ -7,6 +7,8 @@ import {
   modalIngrWrapper,
   modalIngr,
   ingrCloseBnt,
+  cocktailModalMain,
+  ingrModalMain,
 } from '../refs';
 import {
   onClickAddFavModal,
@@ -54,13 +56,14 @@ async function onClickIngr(e) {
     const ingrMarkup = markupIngredients(ingrResponse);
     modalIngrWrapper.innerHTML = ingrMarkup;
     modalIngr.classList.toggle('is-hidden');
-    modalWrapper.classList.add('is-hidden');
+    cocktailModalMain.classList.add('is-hidden');
     getFavouriteIngredients(renderFavouriteIngredientsIconModal);
   }
 }
 // function on close ingr modal
-function onCloseIngrModal(e) {
+function onCloseIngrModal() {
   modalIngr.classList.toggle('is-hidden');
+  cocktailModalMain.classList.remove('is-hidden');
 }
 
 // function to close modal on esc
@@ -69,6 +72,7 @@ function onCloseEsc(e) {
     document.body.classList.remove('modal-open');
     backdrop.classList.add('is-hidden');
     modalIngr.classList.add('is-hidden');
+    cocktailModalMain.classList.remove('is-hidden');
     document.removeEventListener('keydown', onCloseEsc);
   }
 }
@@ -80,6 +84,7 @@ function onClickOutside(e) {
     document.body.classList.remove('modal-open');
     backdrop.classList.add('is-hidden');
     modalIngr.classList.add('is-hidden');
+    cocktailModalMain.classList.remove('is-hidden');
     document.removeEventListener('click', onClickOutside);
   }
 }
