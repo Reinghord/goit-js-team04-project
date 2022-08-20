@@ -50,9 +50,11 @@ async function onClickIngr(e) {
   if (e.target.className === 'ingr-wrapper__btn') {
     const name = e.target.innerHTML;
     const ingrResponse = await getIngredientIncsructions(name);
+    console.log(ingrResponse);
     const ingrMarkup = markupIngredients(ingrResponse);
     modalIngrWrapper.innerHTML = ingrMarkup;
     modalIngr.classList.toggle('is-hidden');
+    modalWrapper.classList.add('is-hidden');
     getFavouriteIngredients(renderFavouriteIngredientsIconModal);
   }
 }

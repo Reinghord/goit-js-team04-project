@@ -19,7 +19,7 @@ function markupForModal(response) {
       <h3 class="instructions__name">Instructions:</h3>
       <p class="instructions__text">${drink.strInstructions}</p>
     </div>
-    <button type="button" class="cocktails-btn cocktails-add" data-action="favourite" data-id="${drink.idDrink}">
+    <button type="button" class="cocktails-btn cocktails-add cocktails-add-modal" data-action="favourite" data-id="${drink.idDrink}">
       <svg width="21px" height="19px" class="cocktails-svg">
       <use  href="${icons}#icon-icon-fav"></use>
     </svg>
@@ -32,16 +32,26 @@ function markupForModal(response) {
 function markupIngredients(ingrResponse) {
   return ingrResponse.data.ingredients
     .map(ingr => {
-      return `<h3 class="cocktails-ingredients-modal__title">${ingr.strIngredient}</h3>
+      return `<h3 class="cocktails-ingredients-modal__title">${
+        ingr.strIngredient
+      }</h3>
       <h4 class="cocktails-ingredients-modal__subtitle">${ingr.strType}</h4>
-      <p class="cocktails-ingredients-modal__text">${ingr.strDescription}</p>
+      <p class="cocktails-ingredients-modal__text">${
+        ingr.strDescription === 'null'
+          ? 'No information available'
+          : ingr.strDescription
+      }</p>
       <ul class="cocktails-ingredients-modal__list">
-        <li class="cocktails-ingredients-modal__item">✶ Type: ${ingr.strType}</li>
+        <li class="cocktails-ingredients-modal__item">✶ Type: ${
+          ingr.strType === 'null' ? 'No information available' : ingr.strType
+        }</li>
         <li class="cocktails-ingredients-modal__item">
           ✶ Country of origin: No information available!
         </li>
         <li class="cocktails-ingredients-modal__item">
-          ✶ Alcohol by volume: ${ingr.strABV}%
+          ✶ Alcohol by volume: ${
+            ingr.strABV === 'null' ? 'No information available' : ingr.strABV
+          }%
         </li>
         <li class="cocktails-ingredients-modal__item">
           ✶ Flavour: No informanion available!
@@ -49,7 +59,7 @@ function markupIngredients(ingrResponse) {
       </ul>
           <button
       type="button"
-      class="cocktails-btn cocktails-add" data-action="favouriteIngr" data-idingr="${ingr.idIngredient}"
+      class="cocktails-btn cocktails-add cocktails-add-modal" data-action="favouriteIngr" data-idingr="${ingr.idIngredient}"
     >
       <svg width="21px" height="19px" class="cocktails-svg">
       <use  href="${icons}#icon-icon-fav"></use>
