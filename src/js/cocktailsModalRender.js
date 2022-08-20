@@ -46,7 +46,15 @@ function markupIngredients(ingrResponse) {
         <li class="cocktails-ingredients-modal__item">
           ✶ Flavour: No informanion available!
         </li>
-      </ul>`;
+      </ul>
+          <button
+      type="button"
+      class="cocktails-btn cocktails-add" data-action="favouriteIngr" data-id="${ingr.idIngredient}"
+    >
+      <svg width="21px" height="19px" class="cocktails-svg">
+      <use  href="${icons}#icon-icon-fav"></use>
+    </svg>
+    </button>`;
     })
     .join('');
 }

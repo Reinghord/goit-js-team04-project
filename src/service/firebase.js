@@ -113,6 +113,34 @@ export function removeFromFavourite(id) {
   }
 }
 
+export async function addToFavouriteIngr(id) {
+  const ingredients = {};
+  ingredients[id] = id;
+
+  try {
+    await update(
+      ref(db, 'favourite/' + auth.currentUser.uid + '/ingredients/'),
+      ingredients
+    );
+  } catch {
+    errorNoLogin();
+  }
+}
+
+export function removeFromFavouriteIngr(id) {
+  const ingredients = {};
+  ingredients[id] = null;
+
+  try {
+    update(
+      ref(db, 'favourite/' + auth.currentUser.uid + '/ingredients/'),
+      ingredients
+    );
+  } catch {
+    errorPopup();
+  }
+}
+
 //LEGACY CODE
 cocktailsList.addEventListener('click', e => {
   const id = e.target.parentElement.parentElement.id;
