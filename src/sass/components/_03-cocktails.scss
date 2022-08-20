@@ -161,7 +161,6 @@
 }
 
 .cocktails-add {
-  position: relative;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -195,11 +194,10 @@
 }
 
 .cocktails-svg {
-  position: absolute;
-  z-index: -1;
   fill: transparent;
   transition-property: fill;
   @include transition;
+  pointer-events: none;
 }
 
 .cocktails-svg--fav {
@@ -307,42 +305,41 @@ body.modal-open {
   margin-bottom: 28px;
 
   font-family: var(--fontSecondary);
-    font-weight: 900;
-    font-size: 32px;
-    line-height: 1.19;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.19;
 }
 .ingr-wrapper__components {
   margin-bottom: 8px;
 
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.5;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
 }
 .ingr-wrapper__subtitle {
   margin-bottom: 8px;
 
   font-weight: 300;
-    font-size: 14px;
-    line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.5;
 }
-
 
 // .ingr-wrapper__ingredient::before {
 //   content: '✶';
 //   color: var(--gray);
 // }
 
-.ingr-wrapper__btn{
+.ingr-wrapper__btn {
   font-size: 16px;
-    line-height: 26px;
-    color: var(--gray);
-    border-style: none;
-    background-color: transparent;
+  line-height: 26px;
+  color: var(--gray);
+  border-style: none;
+  background-color: transparent;
   &:hover,
-  &:focus {color: var(--auxOrange);
+  &:focus {
+    color: var(--auxOrange);
   }
 }
-
 
 .instructions {
   padding-top: 28px;
@@ -434,26 +431,25 @@ body.modal-open {
   @include visually_hidden;
 }
 
-
 // ingredients wrapper
 
 .cocktails-ingredients-modal {
   overflow: hidden;
-    z-index: 55;
-      max-width: 822px;
-      width: calc(100% - 10px);
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      flex-grow: 1;
-    
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-        0px 2px 1px rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      background-color: var(--white);
+  z-index: 55;
+  max-width: 822px;
+  width: calc(100% - 10px);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-grow: 1;
+
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: var(--white);
 }
-.cocktails-ingredients-modal__wrapper{
+.cocktails-ingredients-modal__wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -462,27 +458,27 @@ body.modal-open {
   // padding-bottom: 28px;
   // padding-right: 28px;
 }
-.cocktails-ingredients-modal__title{
+.cocktails-ingredients-modal__title {
   font-family: var(--fontSecondary);
   margin-bottom: 28px;
   padding-top: 40px;
   padding-left: 28px;
 
-    font-weight: 900;
-    font-size: 32px;
-    line-height: 1.19;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.19;
 }
-.cocktails-ingredients-modal__subtitle{
+.cocktails-ingredients-modal__subtitle {
   padding-bottom: 40px;
   padding-left: 28px;
 
   font-weight: 600;
-    font-size: 16px;
-    line-height: 1.5;
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--grapefruit);
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--grapefruit);
 }
-.cocktails-ingredients-modal__text{
+.cocktails-ingredients-modal__text {
   padding-left: 28px;
   padding-right: 28px;
   margin-top: 28px;
@@ -498,25 +494,23 @@ body.modal-open {
   line-height: 28px;
   color: var(--black);
 }
-.cocktails-ingredients-modal__list{
+.cocktails-ingredients-modal__list {
   padding-left: 28px;
   margin-bottom: 20px;
-  padding-right: 1.75
-  
-  
+  padding-right: 1.75;
 }
-.cocktails-ingredients-modal__item{
+.cocktails-ingredients-modal__item {
   font-size: 16px;
   line-height: 1.62;
   color: var(--gray);
 }
-.cocktails-learn-more__modal__ingredient__btn{
+.cocktails-learn-more__modal__ingredient__btn {
   margin-left: auto;
   margin-right: 28px;
   margin-bottom: 28px;
 
   font-family: var(--fontSecondary);
-    font-size: 20px;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
 }

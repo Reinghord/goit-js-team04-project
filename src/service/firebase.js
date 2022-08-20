@@ -20,7 +20,8 @@ import {
 } from 'firebase/database';
 import { errorNoLogin, errorPopup } from '../js/notifications';
 import { errorNoLogin } from '../js/notifications';
-import { cocktailsList } from '../js/refs';
+import { cocktailsList, titlereturn } from '../js/refs';
+import { noResultsMarkup } from '../js/cocktails-markup';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -80,7 +81,7 @@ export function signOutUser() {
 
 onAuthStateChanged(auth, user => {
   toggleBtnContent(user);
-  getFavouriteCocktails();
+  getFavouriteCocktails(renderFavouriteCocktailsIcon);
 });
 
 export async function addToFavourite(id) {
@@ -117,7 +118,7 @@ cocktailsList.addEventListener('click', e => {
   if (auth.currentUser) {
     if (e.target.dataset.action === 'favourite') {
       addToFavourite(id);
-      getFavouriteCocktails();
+      getFavouriteCocktails(renderFavouriteCocktailsIcon);
       e.target.dataset.action = 'addedToFavourite';
       return;
     }
@@ -130,30 +131,34 @@ cocktailsList.addEventListener('click', e => {
   }
 });
 
-export function getFavouriteCocktails() {
+export function getFavouriteCocktails(executeFunction) {
   if (auth.currentUser) {
     const userId = auth.currentUser.uid;
     const dbRef = ref(getDatabase());
     get(child(dbRef, `favourite/${userId}/cocktails`))
-      .then(snapshot => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          const dataKeys = Object.keys(data);
-          dataKeys.forEach(id => {
-            const query = document.getElementById(`${id}`);
-            if (query) {
-              const btn = query.children[2].children[1];
-              const svg = btn.firstElementChild;
-              btn.dataset.action = 'addedToFavourite';
-              svg.classList.add('cocktails-svg--fav');
-            }
-          });
-        } else {
-          console.log('No data available');
-        }
-      })
+      .then(snapshot => executeFunction(snapshot))
       .catch(error => {
         console.error(error);
       });
+  }
+}
+
+export function renderFavouriteCocktailsIcon(snapshot) {
+  {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const dataKeys = Object.keys(data);
+      dataKeys.forEach(id => {
+        const query = document.getElementById(`${id}`);
+        if (query) {
+          const btn = query.children[2].children[1];
+          const svg = btn.firstElementChild;
+          btn.dataset.action = 'addedToFavourite';
+          svg.classList.add('cocktails-svg--fav');
+        }
+      });
+    } else {
+      return;
+    }
   }
 }
