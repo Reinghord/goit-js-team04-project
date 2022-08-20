@@ -49,3 +49,6 @@ export async function getCocktailsByName(name) {
     throw new Error(error);
   }
 }
+
+// Function for fetching info about ingredient
+export async function getIngredientIncsructions() {}
