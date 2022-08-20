@@ -16,6 +16,7 @@ export const {
   btnLogIn,
   btnFavCoks,
   btnFavIngr,
+  sectionHero,
 } = {
   backdrop: document.querySelector('[data-modal]'),
   modalIngr: document.querySelector('.cocktails-ingredients-modal'),
@@ -37,4 +38,5 @@ export const {
   btnLogIn: document.querySelector('.btn-login'),
   btnFavCoks: document.querySelector('[data-action="link-fav-cock"]'),
   btnFavIngr: document.querySelector('[data-action="link-fav-ingr"]'),
+  sectionHero: document.querySelector('.hero'),
 };

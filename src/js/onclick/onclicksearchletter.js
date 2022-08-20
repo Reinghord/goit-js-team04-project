@@ -7,7 +7,10 @@ import {
 } from '../cocktails-markup';
 import { cocktailsList, titleCocktails, btnLoadMore } from '../refs';
 import { pagination } from '../pagination';
-import { getFavouriteCocktails } from '../../service/firebase';
+import {
+  getFavouriteCocktails,
+  renderFavouriteCocktailsIcon,
+} from '../../service/firebase';
 
 //Function to call during click on Learn more button
 //Fetching full details of cocktail ID
@@ -23,7 +26,7 @@ export async function onClickSearchLetter(e) {
         titleCocktails.innerHTML = `Cocktails`;
         cocktailsList.innerHTML = filteredMarkup;
         pagination();
-        getFavouriteCocktails();
+        getFavouriteCocktails(renderFavouriteCocktailsIcon);
         return;
       }
       titleCocktails.innerHTML = `Sorry, we didn't find any cocktail for you`;
