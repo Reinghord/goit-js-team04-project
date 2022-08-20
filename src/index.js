@@ -25,6 +25,7 @@ import './js/firebase/authentication';
 import { getFavouriteCocktails } from './service/firebase';
 import './js/firebase/addToFavourite';
 import './js/onclick/onClickFavCocks';
+import './js/onclick/onClickFavIngr';
 import './js/onclick/onClickAddFavIngrModal';
 //Refs
 import {

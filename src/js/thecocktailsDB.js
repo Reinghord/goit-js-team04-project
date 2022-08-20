@@ -61,3 +61,15 @@ export async function getIngredientIncsructions(name) {
     throw new Error(error);
   }
 }
+
+// Function to fetch ingredient details by ID
+export async function getIngredientById(id) {
+  try {
+    const searchParams = new URLSearchParams({
+      iid: `${id}`,
+    });
+    return await axios.get(`${BASE_URL}/lookup.php?${searchParams}`);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
