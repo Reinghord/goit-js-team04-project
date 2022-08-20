@@ -1,4 +1,19 @@
 import { heroButtonRef, heroSelectRef } from './refs';
+import { getCocktailsByLetter } from './thecocktailsDB';
+import {
+  cocktailsMarkup,
+  markupFilter,
+  noResultsMarkup,
+} from './cocktails-markup';
+import { pagination } from './pagination';
+import {
+  cocktailsList,
+  titleCocktails,
+  btnLoadMore,
+  heroSelectRef,
+} from './refs';
+
+import { errorPopup } from './notifications';
 
 export const buttons = [
   'A',
@@ -71,3 +86,28 @@ function buttonColor(event) {
   }
   event.target.classList.add('hero-button-color');
 }
+
+async function letterListMob(e) {
+  if (e.target.nodeName === 'SELECT') {
+    try {
+      letter = e.target.value;
+      const response = await getCocktailsByLetter(letter);
+      console.log(response);
+      if (response.data.drinks) {
+        const array = cocktailsMarkup(response);
+        localStorage.setItem('markup', JSON.stringify(array));
+        const filteredMarkup = markupFilter(array);
+        titleCocktails.innerHTML = `Cocktails`;
+        cocktailsList.innerHTML = filteredMarkup;
+        pagination();
+        return;
+      }
+      titleCocktails.innerHTML = `Sorry, we didn't find any cocktail for you`;
+      btnLoadMore.classList.add('btn_hidden');
+      return (cocktailsList.innerHTML = noResultsMarkup());
+    } catch (error) {
+      errorPopup();
+    }
+  }
+}
+heroSelectRef.addEventListener('click', e => letterListMob(e));

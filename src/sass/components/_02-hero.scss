@@ -12,8 +12,8 @@
   padding-top: 60px;
   margin-bottom: 28px;
 
-  color: rgba(253, 81, 3, 1);
-  font-family: 'Poppins';
+  color: var(--grapefruit);
+  font-family: var(--fontPrimary);
   font-weight: 600;
   font-size: 22px;
   line-height: 1.91;
@@ -47,12 +47,12 @@
   }
 
   margin-bottom: 40px;
-  font-family: 'Poppins';
+  font-family: var(--fontPrimary);
   font-weight: 500;
   font-size: 18px;
   line-height: 1.56;
   letter-spacing: 0.02em;
-  color: #202025;
+  color: var(--black);
   opacity: 0.8;
 }
 
@@ -78,10 +78,11 @@
     display: none;
   }
 
-  font-family: 'Poppins';
+  font-family: var(--fontPrimary);
   font-weight: 700;
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--black);
+  opacity: 0.8;
   line-height: 1.5;
   border: 0;
   background-color: transparent;
@@ -92,7 +93,7 @@
 
   @include mq(desc) {
     font-size: 24px;
-    color: #5f6775;
+    color: var(--gray);
 
     width: 40px;
     height: 40px;
@@ -103,7 +104,6 @@
   display: block;
   margin-left: 0;
   margin-bottom: 28px;
-
   text-align: center;
 
   @include mq(tab) {
@@ -114,12 +114,12 @@
 }
 
 .hero__text-mob {
-  font-family: 'Poppins';
+  font-family: var(--fontPrimary);
   font-weight: 500;
   font-size: 14px;
   line-height: 2;
   letter-spacing: 0.02em;
-  color: #000000;
+  color: var(--black);
   opacity: 0.8;
 
   margin-bottom: 34px;
@@ -135,16 +135,17 @@
 .hero__select-mob {
   width: 93px;
   height: 34px;
-  color: #fd5103;
-  border-color: #fd5103;
+  color: var(--grapefruit);
+  border-color: var(--grapefruit);
+  background-color: transparent;
   @include mq(tab) {
     display: none;
   }
 }
 
 .hero__select-mob:hover {
-  background: #fd5103;
-  color: white;
+  background: var(--grapefruit);
+  color: var(--white);
 
   @include mq(tab) {
     display: none;
@@ -162,5 +163,5 @@
 }
 
 .hero-button-color {
-  color: #fd5103;
+  color: var(--grapefruit);
 }

@@ -5,7 +5,12 @@ import {
   markupFilter,
   noResultsMarkup,
 } from '../cocktails-markup';
-import { cocktailsList, titleCocktails, btnLoadMore } from '../refs';
+import {
+  cocktailsList,
+  titleCocktails,
+  btnLoadMore,
+  heroSelectRef,
+} from '../refs';
 import { pagination } from '../pagination';
 import {
   getFavouriteCocktails,
