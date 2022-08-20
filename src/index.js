@@ -24,6 +24,7 @@ import { pagination } from './js/pagination';
 import './js/firebase/authentication';
 import { getFavouriteCocktails } from './service/firebase';
 import './js/firebase/addToFavourite';
+import './js/onclick/onClickFavCocks';
 //Refs
 import {
   backdrop,
