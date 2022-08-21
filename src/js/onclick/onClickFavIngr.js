@@ -2,6 +2,7 @@ import { getFavouriteCocktails } from '../../service/firebase';
 import {
   backdrop,
   btnFavIngr,
+  btnLoadMore,
   cocktailsList,
   sectionHero,
   titleCocktails,
@@ -69,7 +70,7 @@ async function onClickMoreInfoIngr(e) {
     backdrop.classList.toggle('is-hidden');
     modalIngr.classList.remove('is-hidden');
     cocktailModalMain.classList.add('is-hidden');
-    getFavouriteIngredients(renderFavouriteIngredientsIconModal);
+    await getFavouriteIngredients(renderFavouriteIngredientsIconModal);
 
     document.addEventListener('click', onClickOutside);
     document.addEventListener('keydown', onCloseEsc);
@@ -90,7 +91,7 @@ const ingredientsMarkup = function (ingredientsData) {
   <p class="cocktails__name">${ingr.strIngredient}</p>
 <div class="btn__wrapper">  
   <button class="btn btn__learn" data-name="${ingr.strIngredient}">Learn more</button>
-  <button class="btn btn__add" data-action="addedToFavouriteIngr" data-idingr="${ingr.idIngredient}"><svg width="21px" height="19px" class="btn__svg btn__svg--fav">
+  <button class="btn btn__add" data-action="addedToFavouriteIngr" data-idingrpage="${ingr.idIngredient}"><svg width="21px" height="19px" class="btn__svg btn__svg--fav">
       <use  href="${icons}#icon-icon-fav"></use>
     </svg>
   </button>
@@ -101,7 +102,7 @@ const ingredientsMarkup = function (ingredientsData) {
 };
 
 export function onClickIngr(e) {
-  const id = e.target.dataset.idingr;
+  const id = e.target.dataset.idingrpage;
   if (e.target.dataset.action === 'favouriteIngr') {
     if (auth.currentUser) {
       addToFavouriteIngr(id);
