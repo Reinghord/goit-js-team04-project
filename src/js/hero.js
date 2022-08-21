@@ -14,6 +14,7 @@ import {
 } from './refs';
 
 import { errorPopup } from './notifications';
+import { searchForm, searchInput } from './header';
 
 export const buttons = [
   'A',
@@ -74,6 +75,7 @@ export function createSearchButtonsMobile(buttons) {
 heroButtonRef.addEventListener('click', buttonColor);
 
 function buttonColor(event) {
+  searchInput.value = '';
   if (event.target.nodeName !== 'BUTTON') {
     return;
   }

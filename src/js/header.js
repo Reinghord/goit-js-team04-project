@@ -26,6 +26,8 @@ const themeNameDark = document.querySelector('.theme__name--dark');
 const favorite = document.querySelector('.favourite--acctive');
 const LinksTheme = document.querySelector('.favourite__wrapper');
 const searchForm = document.querySelector('[data-search]');
+const favoriteLink = document.querySelectorAll('button.favorite__link');
+export const searchInput = document.querySelector('.search__input');
 
 const active = document.querySelectorAll(
   'div.header__wrapper, div.theme__wrapper, form.search__form, div.menu__wrapper'
@@ -44,8 +46,15 @@ theme.addEventListener('change', e => {
   toggleTheme(e.target.checked ? 'theme-dark' : 'theme-light');
 });
 
-favorite.addEventListener('click', () => {
+function toggleFavoriteMod() {
   LinksTheme.classList.toggle('favourite__wrapper--close');
+}
+
+favorite.addEventListener('click', toggleFavoriteMod);
+
+favoriteLink.forEach(e => {
+  e.addEventListener('click', toggleFavoriteMod);
+  e.addEventListener('click', onMenuBtnClick);
 });
 
 // function to set a given theme/color-scheme
@@ -74,6 +83,8 @@ function toggleTheme() {
   }
 })();
 
+// clear input
+
 // searching coctails
 
 const removeStyle = () => {
@@ -97,7 +108,6 @@ const onChange = debounce(async e => {
     const res = await getCocktailsByName(value);
     const searchCoctails = cocktailsMarkup(res);
     cocktailsList.innerHTML = markupFilter(searchCoctails);
-    // console.log(res.data);
     pagination();
     getFavouriteCocktails(renderFavouriteCocktailsIcon);
     if (res.data.drinks.length <= filterNum) {
