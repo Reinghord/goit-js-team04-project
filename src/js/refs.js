@@ -1,6 +1,8 @@
 //Refs
 export const {
   backdrop,
+  cocktailModalMain,
+  ingrModalMain,
   modalIngr,
   modalIngrBtnClose,
   modalIngrWrapper,
@@ -19,6 +21,8 @@ export const {
   sectionHero,
 } = {
   backdrop: document.querySelector('[data-modal]'),
+  cocktailModalMain: document.querySelector('.cocktails-learn-more__modal'),
+  ingrModalMain: document.querySelector('.cocktails-ingredients-modal'),
   modalIngr: document.querySelector('.cocktails-ingredients-modal'),
   modalIngrBtnClose: document.querySelector('.ingr-close-btn'),
   modalIngrWrapper: document.querySelector(

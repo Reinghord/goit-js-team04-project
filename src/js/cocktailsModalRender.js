@@ -32,34 +32,50 @@ function markupForModal(response) {
 function markupIngredients(ingrResponse) {
   return ingrResponse.data.ingredients
     .map(ingr => {
-      return `<h3 class="cocktails-ingredients-modal__title">${
-        ingr.strIngredient
-      }</h3>
-      <h4 class="cocktails-ingredients-modal__subtitle">${ingr.strType}</h4>
+      return `<div class="ingr-modal-pict-wrapper">
+  <img class="ingr-modal-pict" src='https://www.thecocktaildb.com/images/ingredients/${
+    ingr.strIngredient
+  }-Small.png'
+  alt=${ingr.strIngredient}>
+<div class="ingr-modal-title-wrapper">
+  <h3 class="cocktails-ingredients-modal__title">${ingr.strIngredient}</h3>
+      <h4 class="cocktails-ingredients-modal__subtitle">${
+        ingr.strType === null
+          ? 'Sorry lads, we do not know &#128542'
+          : ingr.strType
+      }</h4>
+</div>
+</div>
       <p class="cocktails-ingredients-modal__text">${
-        ingr.strDescription === 'null'
-          ? 'No information available'
+        ingr.strDescription === null
+          ? 'Sorry lads, we do not know &#128542'
           : ingr.strDescription
       }</p>
       <ul class="cocktails-ingredients-modal__list">
         <li class="cocktails-ingredients-modal__item">✶ Type: ${
-          ingr.strType === 'null' ? 'No information available' : ingr.strType
+          ingr.strType === null
+            ? 'Sorry lads, we do not know &#128542'
+            : ingr.strType
         }</li>
         <li class="cocktails-ingredients-modal__item">
-          ✶ Country of origin: No information available!
+          ✶ Country of origin: Sorry lads, we do not know &#128542
         </li>
         <li class="cocktails-ingredients-modal__item">
-          ✶ Alcohol by volume: ${
-            ingr.strABV === 'null' ? 'No information available' : ingr.strABV
-          }%
+          ✶ Alcohol : ${
+            ingr.strAlcohol === 'No'
+              ? 'Sadly No &#128542'
+              : `Oh yeah baby! &#128512`
+          }
         </li>
         <li class="cocktails-ingredients-modal__item">
-          ✶ Flavour: No informanion available!
+          ✶ Flavour: Sorry lads, we do not know &#128542
         </li>
       </ul>
           <button
       type="button"
-      class="cocktails-btn cocktails-add cocktails-add-modal" data-action="favouriteIngr" data-idingr="${ingr.idIngredient}"
+      class="cocktails-btn cocktails-add cocktails-add-modal" data-action="favouriteIngr" data-idingr="${
+        ingr.idIngredient
+      }"
     >
       <svg width="21px" height="19px" class="cocktails-svg">
       <use  href="${icons}#icon-icon-fav"></use>
