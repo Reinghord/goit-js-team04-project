@@ -14,6 +14,7 @@ import {
   cocktailsList,
   heroButtonRef,
   titleCocktails,
+  searchForm,
 } from './refs';
 import { getCocktailsByName } from './thecocktailsDB';
 
@@ -25,7 +26,6 @@ const themeNameLight = document.querySelector('.theme__name--light');
 const themeNameDark = document.querySelector('.theme__name--dark');
 const favorite = document.querySelector('.favourite--acctive');
 const LinksTheme = document.querySelector('.favourite__wrapper');
-const searchForm = document.querySelector('[data-search]');
 
 const active = document.querySelectorAll(
   'div.header__wrapper, div.theme__wrapper, form.search__form, div.menu__wrapper'
@@ -88,7 +88,7 @@ searchForm.addEventListener('click', removeStyle);
 
 const DEBOUNCE_DELAY = 300;
 
-const onChange = debounce(async e => {
+export const onChange = debounce(async e => {
   e.preventDefault();
   titleCocktails.innerHTML = `Cocktails`;
   const filterNum = 9;

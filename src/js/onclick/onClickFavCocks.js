@@ -5,12 +5,15 @@ import {
   sectionHero,
   titleCocktails,
   btnLoadMore,
+  searchForm,
 } from '../refs';
 import { getCocktailById } from '../thecocktailsDB';
 import * as icons from '../../images/icons.svg';
 import { noResultsMarkup } from '../cocktails-markup';
+import { onChange } from '../header';
 
 btnFavCoks.addEventListener('click', () => {
+  searchForm.removeEventListener('input', onChange);
   sectionHero.style.display = 'none';
   titleCocktails.textContent = 'Favourite Cocktails';
   getFavouriteCocktails(onClickFavCocks);
