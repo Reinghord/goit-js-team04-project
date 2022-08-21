@@ -4,6 +4,7 @@ import {
   cocktailsList,
   sectionHero,
   titleCocktails,
+  btnLoadMore,
 } from '../refs';
 import { getIngredientById } from '../thecocktailsDB';
 import * as icons from '../../images/icons.svg';
@@ -20,6 +21,7 @@ btnFavIngr.addEventListener('click', () => {
   sectionHero.style.display = 'none';
   titleCocktails.textContent = 'Favourite Ingredients';
   getFavouriteIngredients(onClickFavIngr);
+  btnLoadMore.classList.add('btn_hidden');
 });
 
 function onClickFavIngr(snapshot) {
