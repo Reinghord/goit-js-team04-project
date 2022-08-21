@@ -26,7 +26,6 @@ const themeNameLight = document.querySelector('.theme__name--light');
 const themeNameDark = document.querySelector('.theme__name--dark');
 const favorite = document.querySelector('.favourite--acctive');
 const LinksTheme = document.querySelector('.favourite__wrapper');
-const searchForm = document.querySelector('[data-search]');
 const favoriteLink = document.querySelectorAll('button.favorite__link');
 export const searchInput = document.querySelector('.search__input');
 
