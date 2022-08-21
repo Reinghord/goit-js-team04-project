@@ -90,7 +90,7 @@ function buttonColor(event) {
 async function letterListMob(e) {
   if (e.target.nodeName === 'SELECT') {
     try {
-      letter = e.target.value;
+      const letter = e.target.value;
       const response = await getCocktailsByLetter(letter);
       console.log(response);
       if (response.data.drinks) {
