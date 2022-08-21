@@ -214,12 +214,8 @@ body.modal-open {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
-  // @include transition;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 2500ms;
+  @include transition;
   transition-property: opacity, visibility;
-  transition-property: opacity;
-  overflow-y: scroll;
 }
 
 .btn__learn-more__modal {
