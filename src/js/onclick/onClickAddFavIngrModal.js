@@ -49,11 +49,11 @@ export function renderFavouriteIngredientsIconModal(snapshot) {
   }
 }
 
-export function getFavouriteIngredients(executeFunction) {
+export async function getFavouriteIngredients(executeFunction) {
   if (auth.currentUser) {
     const userId = auth.currentUser.uid;
     const dbRef = ref(getDatabase());
-    get(child(dbRef, `favourite/${userId}/ingredients`))
+    await get(child(dbRef, `favourite/${userId}/ingredients`))
       .then(snapshot => executeFunction(snapshot))
       .catch(error => {
         console.error(error);
