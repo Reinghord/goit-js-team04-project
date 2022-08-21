@@ -32,8 +32,13 @@
     padding: 10px;
     color: var(--grapefruit);
     margin-left: 10px;
+    @include transition;
     @include mq(tab-only) {
       margin-left: 230px;
+    }
+    &:hover,
+    &:focus {
+      background-color: #f5f5f5;
     }
   }
 }

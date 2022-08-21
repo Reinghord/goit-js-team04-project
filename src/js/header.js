@@ -83,8 +83,6 @@ function toggleTheme() {
   }
 })();
 
-// clear input
-
 // searching coctails
 
 const removeStyle = () => {
