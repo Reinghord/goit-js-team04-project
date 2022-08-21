@@ -9,6 +9,7 @@ import {
   modalIngr,
   cocktailModalMain,
   ingrCloseBnt,
+
 } from '../refs';
 import {
   onCloseIngrModal,
@@ -36,6 +37,7 @@ btnFavIngr.addEventListener('click', () => {
   titleCocktails.textContent = 'Favourite Ingredients';
   getFavouriteIngredients(onClickFavIngr);
   cocktailsList.addEventListener('click', onClickMoreInfoIngr);
+  btnLoadMore.classList.add('btn_hidden');
 });
 
 function onClickFavIngr(snapshot) {

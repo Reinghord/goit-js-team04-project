@@ -2,6 +2,7 @@ body {
   font-family: var(--fontPrimary);
   color: var(--black);
   background-color: var(--white);
+  @include transition;
   &.modal-open {
     overflow: hidden;
   }
