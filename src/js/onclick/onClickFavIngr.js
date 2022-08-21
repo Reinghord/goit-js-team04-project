@@ -10,6 +10,7 @@ import {
   modalIngr,
   cocktailModalMain,
   ingrCloseBnt,
+  searchForm,
 } from '../refs';
 import {
   onCloseIngrModal,
@@ -32,7 +33,10 @@ import { auth } from '../../service/firebase';
 import { removeFromFavouriteIngr } from '../../service/firebase';
 import { addToFavouriteIngr } from '../../service/firebase';
 import { markupIngredients } from '../cocktailsModalRender';
+import { onChange } from '../header';
+
 btnFavIngr.addEventListener('click', () => {
+  searchForm.removeEventListener('input', onChange);
   sectionHero.style.display = 'none';
   titleCocktails.textContent = 'Favourite Ingredients';
   getFavouriteIngredients(onClickFavIngr);
