@@ -21,14 +21,14 @@ const menuOpenBtn = document.querySelector('.mob-btn-open');
 const menuCloseBtn = document.querySelector('.mob-btn-close');
 const menu = document.querySelector('[data-menu]');
 const theme = document.getElementById('checkbox');
-const themeNameLight = document.querySelector('.theme-name__light');
-const themeNameDark = document.querySelector('.theme-name__dark');
-const favorite = document.querySelector('.favorite-acctive');
-const LinksTheme = document.querySelector('.favorite-wrapper');
+const themeNameLight = document.querySelector('.theme__name--light');
+const themeNameDark = document.querySelector('.theme__name--dark');
+const favorite = document.querySelector('.favourite--acctive');
+const LinksTheme = document.querySelector('.favourite__wrapper');
 const searchForm = document.querySelector('[data-search]');
 
 const active = document.querySelectorAll(
-  'div.navigation-wrapper, div.theme-wrapper, form.search__form'
+  'div.header__wrapper, div.theme__wrapper, form.search__form, div.menu__wrapper'
 );
 menuOpenBtn.addEventListener('click', onMenuBtnClick);
 menuCloseBtn.addEventListener('click', onMenuBtnClick);
@@ -39,13 +39,13 @@ function onMenuBtnClick() {
 }
 
 theme.addEventListener('change', e => {
-  themeNameLight.classList.toggle('theme-acctive');
-  themeNameDark.classList.toggle('theme-acctive');
+  themeNameLight.classList.toggle('theme--acctive');
+  themeNameDark.classList.toggle('theme--acctive');
   toggleTheme(e.target.checked ? 'theme-dark' : 'theme-light');
 });
 
 favorite.addEventListener('click', () => {
-  LinksTheme.classList.toggle('favorite-wrapper__close');
+  LinksTheme.classList.toggle('favourite__wrapper--close');
 });
 
 // function to set a given theme/color-scheme
@@ -66,11 +66,11 @@ function toggleTheme() {
   if (localStorage.getItem('theme') === 'theme-dark') {
     setTheme('theme-dark');
     theme.checked = true;
-    themeNameDark.classList.toggle('theme-acctive');
+    themeNameDark.classList.toggle('theme--acctive');
   } else {
     setTheme('theme-light');
     theme.checked = false;
-    themeNameLight.classList.toggle('theme-acctive');
+    themeNameLight.classList.toggle('theme--acctive');
   }
 })();
 
@@ -78,8 +78,8 @@ function toggleTheme() {
 
 const removeStyle = () => {
   heroButtonRef.childNodes.forEach(e => {
-    if (e.classList.contains('hero-button-color')) {
-      e.classList.remove('hero-button-color');
+    if (e.classList.contains('hero__button--color')) {
+      e.classList.remove('hero__button--color');
     }
   });
 };

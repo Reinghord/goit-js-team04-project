@@ -9,7 +9,6 @@ import {
   modalIngr,
   cocktailModalMain,
   ingrCloseBnt,
-
 } from '../refs';
 import {
   onCloseIngrModal,
@@ -86,12 +85,12 @@ async function onClickMoreInfoIngr(e) {
 const ingredientsMarkup = function (ingredientsData) {
   return ingredientsData
     .map(ingr => {
-      return `<li class="cocktails-item" id="${ingr.idIngredient}" >
-  <img class="cocktails-img" src="https://www.thecocktaildb.com/images/ingredients/${ingr.strIngredient}-Medium.png" alt="${ingr.strIngredient}" />
-  <p class="cocktails-name">${ingr.strIngredient}</p>
-<div class="cocktails-btn__wrapper">  
-  <button class="cocktails-btn cocktails-learn" data-name="${ingr.strIngredient}">Learn more</button>
-  <button class="cocktails-btn cocktails-add" data-action="addedToFavouriteIngr" data-idingr="${ingr.idIngredient}"><svg width="21px" height="19px" class="cocktails-svg cocktails-svg--fav">
+      return `<li class="cocktails__item" id="${ingr.idIngredient}" >
+  <img class="cocktails__img" src="https://www.thecocktaildb.com/images/ingredients/${ingr.strIngredient}-Medium.png" alt="${ingr.strIngredient}" />
+  <p class="cocktails__name">${ingr.strIngredient}</p>
+<div class="btn__wrapper">  
+  <button class="btn btn__learn" data-name="${ingr.strIngredient}">Learn more</button>
+  <button class="btn btn__add" data-action="addedToFavouriteIngr" data-idingr="${ingr.idIngredient}"><svg width="21px" height="19px" class="btn__svg btn__svg--fav">
       <use  href="${icons}#icon-icon-fav"></use>
     </svg>
   </button>
@@ -115,7 +114,7 @@ export function onClickIngr(e) {
   if (e.target.dataset.action === 'addedToFavouriteIngr') {
     if (auth.currentUser) {
       removeFromFavouriteIngr(id);
-      e.target.firstElementChild.classList.remove('cocktails-svg--fav');
+      e.target.firstElementChild.classList.remove('btn__svg--fav');
       e.target.dataset.action = 'favouriteIngr';
       return;
     }

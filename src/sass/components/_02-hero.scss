@@ -56,7 +56,7 @@
   opacity: 0.8;
 }
 
-.hero-list-button {
+.hero__list {
   @include mq(mob-only) {
     display: none;
   }
@@ -113,7 +113,7 @@
   }
 }
 
-.hero__text-mob {
+.hero__text--mob {
   font-family: var(--fontPrimary);
   font-weight: 500;
   font-size: 14px;
@@ -132,7 +132,7 @@
   }
 }
 
-.hero__select-mob {
+.hero__select--mob {
   width: 93px;
   height: 34px;
   color: var(--grapefruit);
@@ -141,14 +141,13 @@
   @include mq(tab) {
     display: none;
   }
-}
+  &:hover {
+    background: var(--grapefruit);
+    color: var(--white);
 
-.hero__select-mob:hover {
-  background: var(--grapefruit);
-  color: var(--white);
-
-  @include mq(tab) {
-    display: none;
+    @include mq(tab) {
+      display: none;
+    }
   }
 }
 
@@ -162,6 +161,6 @@
   }
 }
 
-.hero-button-color {
+.hero__button--color {
   color: var(--grapefruit);
 }

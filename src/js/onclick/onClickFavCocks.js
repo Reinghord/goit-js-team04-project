@@ -38,12 +38,12 @@ function onClickFavCocks(snapshot) {
 const cocktailsMarkup = function (cocktailsData) {
   return cocktailsData
     .map(drink => {
-      return `<li class="cocktails-item" id="${drink.idDrink}" >
-  <img class="cocktails-img" src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
-  <p class="cocktails-name">${drink.strDrink}</p>
-<div class="cocktails-btn__wrapper">  
-  <button class="cocktails-btn cocktails-learn" data-action="learn-more">Learn more</button>
-  <button class="cocktails-btn cocktails-add" data-action="addedToFavourite"><svg width="21px" height="19px" class="cocktails-svg cocktails-svg--fav">
+      return `<li class="cocktails__item" id="${drink.idDrink}" >
+  <img class="cocktails__img" src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
+  <p class="cocktails__name">${drink.strDrink}</p>
+<div class="btn__wrapper">  
+  <button class="btn btn__learn" data-action="learn-more">Learn more</button>
+  <button class="btn btn__add" data-action="addedToFavourite"><svg width="21px" height="19px" class="btn__svg btn__svg--fav">
       <use  href="${icons}#icon-icon-fav"></use>
     </svg>
   </button>

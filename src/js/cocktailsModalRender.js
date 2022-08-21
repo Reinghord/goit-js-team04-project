@@ -8,19 +8,19 @@ function markupForModal(response) {
       src="${drink.strDrinkThumb}"
       alt="${drink.strDrink}"
     />
-    <div class="ingr-wrapper">
-      <h3 class="ingr-wrapper__name">${drink.strDrink}</h3>
-      <h4 class="ingr-wrapper__components">INGREDIENTS</h4>
-      <p class="ingr-wrapper__subtitle">Per cocktail</p>
-      <ul class="ingr-wrapper__list"></ul>
+    <div class="ingr__wrapper">
+      <h3 class="ingr__wrapper__name">${drink.strDrink}</h3>
+      <h4 class="ingr__wrapper__components">INGREDIENTS</h4>
+      <p class="ingr__wrapper__subtitle">Per cocktail</p>
+      <ul class="ingr__wrapper__list"></ul>
       </div>
     </div>
     <div class="instructions">
       <h3 class="instructions__name">Instructions:</h3>
       <p class="instructions__text">${drink.strInstructions}</p>
     </div>
-    <button type="button" class="cocktails-btn cocktails-add cocktails-add-modal" data-action="favourite" data-id="${drink.idDrink}">
-      <svg width="21px" height="19px" class="cocktails-svg">
+    <button type="button" class="btn btn__add btn__add-modal" data-action="favourite" data-id="${drink.idDrink}">
+      <svg width="21px" height="19px" class="btn__svg">
       <use  href="${icons}#icon-icon-fav"></use>
     </svg>
     </button>
@@ -73,11 +73,11 @@ function markupIngredients(ingrResponse) {
       </ul>
           <button
       type="button"
-      class="cocktails-btn cocktails-add cocktails-add-modal" data-action="favouriteIngr" data-idingr="${
+      class="btn btn__add btn__add-modal" data-action="favouriteIngr" data-idingr="${
         ingr.idIngredient
       }"
     >
-      <svg width="21px" height="19px" class="cocktails-svg">
+      <svg width="21px" height="19px" class="btn__svg">
       <use  href="${icons}#icon-icon-fav"></use>
     </svg>
     </button>`;

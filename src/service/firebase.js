@@ -157,7 +157,7 @@ cocktailsList.addEventListener('click', e => {
   if (e.target.dataset.action === 'addedToFavourite') {
     if (auth.currentUser) {
       removeFromFavourite(id);
-      e.target.firstElementChild.classList.remove('cocktails-svg--fav');
+      e.target.firstElementChild.classList.remove('btn__svg--fav');
       e.target.dataset.action = 'favourite';
       return;
     }
@@ -188,7 +188,7 @@ export function renderFavouriteCocktailsIcon(snapshot) {
           const btn = query.children[2].children[1];
           const svg = btn.firstElementChild;
           btn.dataset.action = 'addedToFavourite';
-          svg.classList.add('cocktails-svg--fav');
+          svg.classList.add('btn__svg--fav');
         }
       });
     } else {
@@ -198,8 +198,8 @@ export function renderFavouriteCocktailsIcon(snapshot) {
 }
 
 function removeFavIconsClass() {
-  const query = document.querySelectorAll('.cocktails-svg--fav');
+  const query = document.querySelectorAll('.btn__svg--fav');
   query.forEach(element => {
-    element.classList.remove('cocktails-svg--fav');
+    element.classList.remove('btn__svg--fav');
   });
 }

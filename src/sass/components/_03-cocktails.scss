@@ -7,7 +7,7 @@
   }
 }
 
-.title-cocktails {
+.cocktails__title {
   margin-inline: auto;
   text-align: center;
   padding-bottom: 60px;
@@ -30,7 +30,7 @@
   }
 }
 
-.cocktails-list {
+.cocktails__list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -38,7 +38,7 @@
     gap: 32px;
   }
 }
-.cocktails-item {
+.cocktails__item {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -58,13 +58,13 @@
     width: calc((100% - 64px) / 3);
   }
 }
-.cocktails-img {
+.cocktails__img {
   display: block;
   width: 100%;
   // height: 395px;
 }
 
-.cocktails-name {
+.cocktails__name {
   margin-top: 20px;
   margin-bottom: 16px;
 
@@ -88,9 +88,9 @@
     margin-bottom: 27px;
   }
 }
-// btns
 
-.cocktails-btn__wrapper {
+// btns
+.btn__wrapper {
   justify-content: center;
   display: flex;
   justify-content: space-between;
@@ -109,7 +109,7 @@
   }
 }
 
-.cocktails-btn {
+.btn {
   font-family: var(--fontSecondary);
   font-size: 14px;
   line-height: 1.71;
@@ -124,7 +124,7 @@
   }
 }
 
-.cocktails-learn {
+.btn__learn {
   background-color: var(--auxOrange);
   border-style: none;
   border-radius: 4px;
@@ -159,7 +159,7 @@
   }
 }
 
-.cocktails-add {
+.btn__add {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -189,14 +189,14 @@
   }
 }
 
-.cocktails-svg {
+.btn__svg {
   fill: transparent;
   transition-property: fill;
   @include transition;
   pointer-events: none;
 }
 
-.cocktails-svg--fav {
+.btn__svg--fav {
   fill: var(--grapefruit);
 }
 // modal styles
@@ -214,21 +214,11 @@ body.modal-open {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
-  // @include transition;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 2500ms;
+  @include transition;
   transition-property: opacity, visibility;
-  transition-property: opacity;
-  overflow-y: scroll;
 }
 
-.is-hidden {
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.cocktails-learn-more__modal {
+.btn__learn-more__modal {
   z-index: 4;
   max-width: 822px;
   width: calc(100% - 20px);
@@ -238,8 +228,8 @@ body.modal-open {
   transform: translate(-50%, -50%);
   flex-grow: 1;
 
-    max-height: calc(100vh - 20px);
-      overflow-y: auto;
+  max-height: calc(100vh - 20px);
+  overflow-y: auto;
 
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -247,7 +237,7 @@ body.modal-open {
   background-color: var(--white);
 }
 
-.modal-wrapper {
+.modal__wrapper {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -257,7 +247,7 @@ body.modal-open {
 
 // modal content
 
-.cocktails-learn-more__modal__close__btn {
+.btn__learn-more__modal__close__btn {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -278,7 +268,7 @@ body.modal-open {
   }
 }
 
-.cocktails-learn-more__modal__icon {
+.btn__learn-more__modal__icon {
   flex-shrink: 0;
 }
 
@@ -289,7 +279,7 @@ body.modal-open {
   border-radius: 4px 4px 4px 45px;
 }
 
-.cocktails-add-modal {
+.btn__add-modal {
   margin-left: auto;
   margin-bottom: 28px;
   margin-right: 28px;
@@ -297,7 +287,7 @@ body.modal-open {
 
 //  ingredients wrapper
 
-.ingr-wrapper {
+.ingr__wrapper {
   margin-top: 40px;
   margin-left: 32px;
 }
@@ -309,7 +299,7 @@ body.modal-open {
   }
 }
 
-.ingr-wrapper__name {
+.ingr__wrapper__name {
   margin-bottom: 28px;
 
   font-family: var(--fontSecondary);
@@ -317,14 +307,14 @@ body.modal-open {
   font-size: 32px;
   line-height: 1.19;
 }
-.ingr-wrapper__components {
+.ingr__wrapper__components {
   margin-bottom: 8px;
 
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
 }
-.ingr-wrapper__subtitle {
+.ingr__wrapper__subtitle {
   margin-bottom: 8px;
 
   font-weight: 300;
@@ -332,18 +322,18 @@ body.modal-open {
   line-height: 1.5;
 }
 
-.ingr-wrapper__btn::before {
+.ingr__wrapper__btn::before {
   content: '✶';
   padding-right: 5px;
   color: var(--gray);
   @include transition;
   transition-property: color;
 }
-.ingr-wrapper__btn:hover::before {
+.ingr__wrapper__btn:hover::before {
   color: var(--auxOrange);
 }
 
-.ingr-wrapper__btn {
+.ingr__wrapper__btn {
   padding-left: 0;
   font-size: 16px;
   line-height: 26px;
@@ -375,7 +365,7 @@ body.modal-open {
   color: var(--gray);
 }
 
-.cocktails-learn-more__modal__btn {
+.btn__learn-more__modal__btn {
   margin-left: auto;
   margin-right: 28px;
   margin-bottom: 28px;
@@ -459,8 +449,8 @@ body.modal-open {
   left: 50%;
   transform: translate(-50%, -50%);
   flex-grow: 1;
-    max-height: calc(100vh - 50px);
-    overflow-y: auto;
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
 
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -490,7 +480,6 @@ body.modal-open {
   font-size: 16px;
   line-height: 1.5;
   text-transform: uppercase;
-  
 }
 .cocktails-ingredients-modal__text {
   padding-left: 28px;
@@ -520,7 +509,7 @@ body.modal-open {
   line-height: 1.62;
   color: var(--gray);
 }
-.cocktails-learn-more__modal__ingredient__btn {
+.btn__learn-more__modal__ingredient__btn {
   margin-left: auto;
   display: block;
   margin-right: 28px;
@@ -537,12 +526,10 @@ body.modal-open {
 .ingr-modal-pict-wrapper {
   display: flex;
   flex-direction: row;
-  
 }
-.ingr-modal-pict{
+.ingr-modal-pict {
   display: block;
   width: 100px;
   height: 100px;
   align-self: center;
-  
 }

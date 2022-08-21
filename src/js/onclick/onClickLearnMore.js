@@ -48,7 +48,7 @@ export async function onClickLearnMore(e) {
 
 // Function to open more info on ingr
 async function onClickIngr(e) {
-  if (e.target.className === 'ingr-wrapper__btn') {
+  if (e.target.className === 'ingr__wrapper__btn') {
     const name = e.target.innerHTML;
     const ingrResponse = await getIngredientIncsructions(name);
     console.log(ingrResponse);
@@ -99,7 +99,7 @@ export function onClickLearnMoreClose() {
 // fucking function checking fucking elements
 
 function checkIngredients(response) {
-  const list = document.querySelector('.ingr-wrapper__list');
+  const list = document.querySelector('.ingr__wrapper__list');
   const singleDrink = response.data.drinks[0];
   const singleDrinkKeys = Object.values(singleDrink);
   let newMassive = [];
@@ -111,7 +111,7 @@ function checkIngredients(response) {
   const filteredMassive = newMassive.filter(item => item);
   const filteredMarkup = filteredMassive
     .map(ingr => {
-      return `<li class="ingr-wrapper__ingredient"><button type="button" class="ingr-wrapper__btn">${ingr}</button></li>`;
+      return `<li class="ingr__wrapper__ingredient"><button type="button" class="ingr__wrapper__btn">${ingr}</button></li>`;
     })
     .join('');
   list.innerHTML = filteredMarkup;

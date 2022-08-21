@@ -21,23 +21,23 @@ export const {
   sectionHero,
 } = {
   backdrop: document.querySelector('[data-modal]'),
-  cocktailModalMain: document.querySelector('.cocktails-learn-more__modal'),
+  cocktailModalMain: document.querySelector('.btn__learn-more__modal'),
   ingrModalMain: document.querySelector('.cocktails-ingredients-modal'),
   modalIngr: document.querySelector('.cocktails-ingredients-modal'),
   modalIngrBtnClose: document.querySelector('.ingr-close-btn'),
   modalIngrWrapper: document.querySelector(
     '.cocktails-ingredients-modal__wrapper'
   ),
-  modalWrapper: document.querySelector('.modal-wrapper'),
+  modalWrapper: document.querySelector('.modal__wrapper'),
   ingrCloseBnt: document.querySelector('.ingr-close-btn'),
   cocktailsListCloseBtn: document.querySelector(
-    '.cocktails-learn-more__modal__close__btn'
+    '.btn__learn-more__modal__close__btn'
   ),
-  cocktailsList: document.querySelector('.cocktails-list'),
-  letterList: document.querySelector('.hero-list-button'),
-  heroButtonRef: document.querySelector('.hero-list-button'),
+  cocktailsList: document.querySelector('.cocktails__list'),
+  letterList: document.querySelector('.hero__list'),
+  heroButtonRef: document.querySelector('.hero__list'),
   heroSelectRef: document.querySelector('[name="search"]'),
-  titleCocktails: document.querySelector('.title-cocktails'),
+  titleCocktails: document.querySelector('.cocktails__title'),
   btnLoadMore: document.querySelector('.btn_load-more'),
   btnLogIn: document.querySelector('.btn-login'),
   btnFavCoks: document.querySelector('[data-action="link-fav-cock"]'),

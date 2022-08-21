@@ -7,17 +7,17 @@ body {
     overflow: hidden;
   }
   ::-webkit-scrollbar {
-    width: 10px;
-    
+    width: 5px;
+    border-radius: 5px;
   }
-    ::-webkit-scrollbar-track {
-      background: var(--white);
-    }
-        ::-webkit-scrollbar-thumb {
-          background-color: rgba($color: #fe7031, $alpha: 0.7);
-          
-          border-radius: 5px;
-        }
+  ::-webkit-scrollbar-track {
+    background: var(--white);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba($color: #fe7031, $alpha: 0.7);
+
+    border-radius: 5px;
+  }
 }
 
 $global-list: h1, h2, h3, h4, h5, p, ul;
@@ -69,27 +69,9 @@ button {
   cursor: pointer;
 }
 
-.card-set {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-
-  @include mq(tab) {
-    --card-grid-item: 2;
-    --card-grid-width: 30px;
-    gap: 30px;
-  }
-
-  @include mq(desc) {
-    --card-grid-item: 3;
-  }
-}
-
-.card-set__item {
-  flex-basis: calc(
-    (
-      (100% - ((var(--card-grid-item) - 1) * var(--card-grid-width))) /
-        var(--card-grid-item)
-    )
-  );
+.is-hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
