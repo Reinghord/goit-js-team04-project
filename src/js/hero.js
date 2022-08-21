@@ -110,4 +110,4 @@ async function letterListMob(e) {
     }
   }
 }
-heroSelectRef.addEventListener('click', e => letterListMob(e));
+heroSelectRef.addEventListener('change', e => letterListMob(e));
