@@ -46,8 +46,7 @@ export async function onClickLearnMore(e) {
   }
 }
 
-//   modalIngr,
-// modalIngrBtnClose,
+// Function to open more info on ingr
 async function onClickIngr(e) {
   if (e.target.className === 'ingr-wrapper__btn') {
     const name = e.target.innerHTML;
@@ -61,13 +60,13 @@ async function onClickIngr(e) {
   }
 }
 // function on close ingr modal
-function onCloseIngrModal() {
+export function onCloseIngrModal() {
   modalIngr.classList.toggle('is-hidden');
   cocktailModalMain.classList.remove('is-hidden');
 }
 
 // function to close modal on esc
-function onCloseEsc(e) {
+export function onCloseEsc(e) {
   if (e.code === 'Escape') {
     document.body.classList.remove('modal-open');
     backdrop.classList.add('is-hidden');
@@ -79,7 +78,7 @@ function onCloseEsc(e) {
 
 // function to close on clock outside
 
-function onClickOutside(e) {
+export function onClickOutside(e) {
   if (e.target === backdrop) {
     document.body.classList.remove('modal-open');
     backdrop.classList.add('is-hidden');
