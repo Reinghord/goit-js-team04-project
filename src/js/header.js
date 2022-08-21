@@ -14,6 +14,7 @@ import {
   cocktailsList,
   heroButtonRef,
   titleCocktails,
+  searchForm,
 } from './refs';
 import { getCocktailsByName } from './thecocktailsDB';
 
@@ -97,7 +98,7 @@ searchForm.addEventListener('click', removeStyle);
 
 const DEBOUNCE_DELAY = 300;
 
-const onChange = debounce(async e => {
+export const onChange = debounce(async e => {
   e.preventDefault();
   titleCocktails.innerHTML = `Cocktails`;
   const filterNum = 9;
