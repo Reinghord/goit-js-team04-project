@@ -1,4 +1,40 @@
 .footer {
   background-color: var(--grapefruit);
-  height: 110px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.social-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .social {
+    margin-bottom: 30px;
+  }
+  .social-title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .social-list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    @include mq(mob-only) {
+      flex-direction: column;
+    }
+  }
+  .social-link {
+    padding: 10px;
+    font-size: 20px;
+    color: var(--grey);
+    @include transition;
+    &:hover,
+    &:focus {
+      color: var(--gray);
+    }
+    @include mq(mob-only) {
+      font-size: 25px;
+    }
+  }
 }
