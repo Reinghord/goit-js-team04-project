@@ -64,7 +64,7 @@ async function onClickMoreInfoIngr(e) {
     const ingrResponse = await getIngredientIncsructions(name);
     const ingrMarkup = markupIngredients(ingrResponse);
     modalIngrWrapper.innerHTML = ingrMarkup;
-    document.body.classList.toggle('modal-open');
+    document.body.classList.add('modal-open');
     backdrop.classList.toggle('is-hidden');
     modalIngr.classList.remove('is-hidden');
     cocktailModalMain.classList.add('is-hidden');
@@ -75,6 +75,7 @@ async function onClickMoreInfoIngr(e) {
     ingrCloseBnt.addEventListener('click', e => {
       backdrop.classList.add('is-hidden');
       modalIngr.classList.add('is-hidden');
+      document.body.classList.remove('modal-open');
     });
   }
 }
