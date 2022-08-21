@@ -22,7 +22,7 @@ export function onClickIngr(e) {
   if (e.target.dataset.action === 'addedToFavouriteIngr') {
     if (auth.currentUser) {
       removeFromFavouriteIngr(id);
-      e.target.firstElementChild.classList.remove('cocktails-svg--fav');
+      e.target.firstElementChild.classList.remove('btn__svg--fav');
       e.target.dataset.action = 'favouriteIngr';
       return;
     }
@@ -40,7 +40,7 @@ export function renderFavouriteIngredientsIconModal(snapshot) {
         if (query) {
           const svg = query.firstElementChild;
           query.dataset.action = 'addedToFavouriteIngr';
-          svg.classList.add('cocktails-svg--fav');
+          svg.classList.add('btn__svg--fav');
         }
       });
     } else {

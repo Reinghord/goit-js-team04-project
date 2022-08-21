@@ -79,12 +79,12 @@ function buttonColor(event) {
   }
   event.currentTarget.children;
   for (const iterator of event.currentTarget.children) {
-    if (iterator.classList.contains('hero-button-color')) {
-      iterator.classList.remove('hero-button-color');
+    if (iterator.classList.contains('hero__button--color')) {
+      iterator.classList.remove('hero__button--color');
       break;
     }
   }
-  event.target.classList.add('hero-button-color');
+  event.target.classList.add('hero__button--color');
 }
 
 async function letterListMob(e) {

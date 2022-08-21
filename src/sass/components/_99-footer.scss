@@ -3,7 +3,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.social-wrapper {
+.social__wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,11 +11,11 @@
   .social {
     margin-bottom: 30px;
   }
-  .social-title {
+  .social__title {
     text-align: center;
     margin-bottom: 30px;
   }
-  .social-list {
+  .social__list {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -24,7 +24,7 @@
       flex-direction: column;
     }
   }
-  .social-link {
+  .social__link {
     padding: 10px;
     font-size: 20px;
     color: var(--grey);
