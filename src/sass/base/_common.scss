@@ -5,6 +5,18 @@ body {
   &.modal-open {
     overflow: hidden;
   }
+  ::-webkit-scrollbar {
+    width: 10px;
+    
+  }
+    ::-webkit-scrollbar-track {
+      background: var(--white);
+    }
+        ::-webkit-scrollbar-thumb {
+          background-color: rgba($color: #fe7031, $alpha: 0.7);
+          
+          border-radius: 5px;
+        }
 }
 
 $global-list: h1, h2, h3, h4, h5, p, ul;
