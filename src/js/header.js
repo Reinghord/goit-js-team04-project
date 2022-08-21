@@ -1,11 +1,13 @@
 import debounce from 'lodash.debounce';
-import { getFavouriteCocktails } from '../service/firebase';
+import {
+  getFavouriteCocktails,
+  renderFavouriteCocktailsIcon,
+} from '../service/firebase';
 import {
   cocktailsMarkup,
   markupFilter,
   noResultsMarkup,
 } from './cocktails-markup';
-import { errorPopup } from './notifications';
 import { pagination } from './pagination';
 import { btnLoadMore, cocktailsList, titleCocktails } from './refs';
 import { getCocktailsByName } from './thecocktailsDB';
@@ -74,13 +76,18 @@ const DEBOUNCE_DELAY = 300;
 const onChange = debounce(async e => {
   e.preventDefault();
   titleCocktails.innerHTML = `Cocktails`;
+  const filterNum = 9;
   try {
     const value = e.target.value.trim();
     const res = await getCocktailsByName(value);
     const searchCoctails = cocktailsMarkup(res);
     cocktailsList.innerHTML = markupFilter(searchCoctails);
+    console.log(res.data);
     pagination();
-    getFavouriteCocktails();
+    getFavouriteCocktails(renderFavouriteCocktailsIcon);
+    if (res.data.drinks.length <= filterNum) {
+      btnLoadMore.classList.add('btn_hidden');
+    }
   } catch (error) {
     titleCocktails.innerHTML = `Sorry, we didn't find any cocktail for you`;
     cocktailsList.innerHTML = noResultsMarkup();
