@@ -46,8 +46,7 @@ export async function onClickLearnMore(e) {
   }
 }
 
-//   modalIngr,
-// modalIngrBtnClose,
+// Function to open more info on ingr
 async function onClickIngr(e) {
   if (e.target.className === 'ingr-wrapper__btn') {
     const name = e.target.innerHTML;

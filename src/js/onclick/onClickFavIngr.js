@@ -23,7 +23,7 @@ function onClickFavIngr(snapshot) {
     const get = keys.map(key => getIngredientById(key));
     Promise.all(get).then(response => {
       const filteredResponse = response.map(elem => elem.data.ingredients[0]);
-
+      console.log(filteredResponse);
       const markup = ingredientsMarkup(filteredResponse);
 
       cocktailsList.innerHTML = markup;
@@ -33,6 +33,9 @@ function onClickFavIngr(snapshot) {
     cocktailsList.innerHTML = noResultsMarkup();
   }
 }
+
+// function for lean more about ingr
+function onClickMoreInfoIngr() {}
 
 // Function to create an array of markup
 const ingredientsMarkup = function (ingredientsData) {
