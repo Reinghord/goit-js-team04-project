@@ -28,7 +28,7 @@ const LinksTheme = document.querySelector('.favourite__wrapper');
 const searchForm = document.querySelector('[data-search]');
 
 const active = document.querySelectorAll(
-  'div.header__wrapper, div.theme__wrapper, form.search__form'
+  'div.header__wrapper, div.theme__wrapper, form.search__form, div.menu__wrapper'
 );
 menuOpenBtn.addEventListener('click', onMenuBtnClick);
 menuCloseBtn.addEventListener('click', onMenuBtnClick);
