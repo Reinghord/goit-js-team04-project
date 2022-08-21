@@ -9,7 +9,12 @@ import {
   noResultsMarkup,
 } from './cocktails-markup';
 import { pagination } from './pagination';
-import { btnLoadMore, cocktailsList, titleCocktails } from './refs';
+import {
+  btnLoadMore,
+  cocktailsList,
+  heroButtonRef,
+  titleCocktails,
+} from './refs';
 import { getCocktailsByName } from './thecocktailsDB';
 
 const menuOpenBtn = document.querySelector('.mob-btn-open');
@@ -71,6 +76,16 @@ function toggleTheme() {
 
 // searching coctails
 
+const removeStyle = () => {
+  heroButtonRef.childNodes.forEach(e => {
+    if (e.classList.contains('hero-button-color')) {
+      e.classList.remove('hero-button-color');
+    }
+  });
+};
+
+searchForm.addEventListener('click', removeStyle);
+
 const DEBOUNCE_DELAY = 300;
 
 const onChange = debounce(async e => {
@@ -82,7 +97,7 @@ const onChange = debounce(async e => {
     const res = await getCocktailsByName(value);
     const searchCoctails = cocktailsMarkup(res);
     cocktailsList.innerHTML = markupFilter(searchCoctails);
-    console.log(res.data);
+    // console.log(res.data);
     pagination();
     getFavouriteCocktails(renderFavouriteCocktailsIcon);
     if (res.data.drinks.length <= filterNum) {
