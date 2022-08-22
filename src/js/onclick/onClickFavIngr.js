@@ -95,7 +95,7 @@ async function onClickMoreInfoIngr(e) {
 const ingredientsMarkup = function (ingredientsData) {
   return ingredientsData
     .map(ingr => {
-      return `<li class="cocktails__item" id="${ingr.idIngredient}" >
+      return `<li class="cocktails__item" id="${ingr.idIngredient}" data-aos="fade-up">
   <img class="cocktails__img" src="https://www.thecocktaildb.com/images/ingredients/${ingr.strIngredient}-Medium.png" alt="${ingr.strIngredient}" />
   <p class="cocktails__name">${ingr.strIngredient}</p>
 <div class="btn__wrapper">  
