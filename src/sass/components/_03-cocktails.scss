@@ -47,6 +47,7 @@
   width: calc(100vw - 40px);
   border: 2px solid var(--grapefruit);
   border-radius: 4px;
+  @include transition;
 
   @media screen and (min-width: 480px) {
     width: 480px;
@@ -532,4 +533,15 @@ body.modal-open {
   width: 100px;
   height: 100px;
   align-self: center;
+}
+
+.hide-my__li {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
 }
