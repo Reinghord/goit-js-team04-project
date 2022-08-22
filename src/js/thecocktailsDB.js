@@ -5,10 +5,7 @@ const BASE_URL = `https://www.thecocktaildb.com/api/json/v1/1`;
 // Fetching 10 random cocktails
 export async function getRandomCocktails() {
   try {
-    const searchParams = new URLSearchParams({
-      f: 'a',
-    });
-    return await axios.get(`${BASE_URL}/search.php?${searchParams}`);
+    return await axios.get(`${BASE_URL}/random.php`);
   } catch (error) {
     throw new Error(error);
   }

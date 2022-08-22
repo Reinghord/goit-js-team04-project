@@ -152,7 +152,6 @@
     background-color: var(--grapefruit);
     color: var(--white);
     scale: 1.15;
-    
   }
 
   &:active {
@@ -391,6 +390,9 @@ body.modal-open {
 
 .image_no-result {
   margin-inline: auto;
+  @media screen and (max-width: $mobile) {
+    width: 100%;
+  }
 }
 
 .btn_load-more {
