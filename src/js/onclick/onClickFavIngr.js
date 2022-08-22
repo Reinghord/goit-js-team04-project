@@ -34,14 +34,19 @@ import { removeFromFavouriteIngr } from '../../service/firebase';
 import { addToFavouriteIngr } from '../../service/firebase';
 import { markupIngredients } from '../cocktailsModalRender';
 import { onChange } from '../header';
+import { errorNoLogin } from '../notifications';
 
-btnFavIngr.addEventListener('click', () => {
-  searchForm.removeEventListener('input', onChange);
-  sectionHero.style.display = 'none';
-  titleCocktails.textContent = 'Favourite Ingredients';
-  getFavouriteIngredients(onClickFavIngr);
-  cocktailsList.addEventListener('click', onClickMoreInfoIngr);
-  btnLoadMore.classList.add('btn_hidden');
+btnFavIngr.addEventListener('click', async () => {
+  try {
+    await getFavouriteIngredients(onClickFavIngr);
+    searchForm.removeEventListener('input', onChange);
+    sectionHero.style.display = 'none';
+    titleCocktails.textContent = 'Favourite Ingredients';
+    cocktailsList.addEventListener('click', onClickMoreInfoIngr);
+    btnLoadMore.classList.add('btn_hidden');
+  } catch (error) {
+    errorNoLogin();
+  }
 });
 
 function onClickFavIngr(snapshot) {

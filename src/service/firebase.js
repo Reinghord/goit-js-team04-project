@@ -165,16 +165,17 @@ cocktailsList.addEventListener('click', e => {
   }
 });
 
-export function getFavouriteCocktails(executeFunction) {
+export async function getFavouriteCocktails(executeFunction) {
   if (auth.currentUser) {
     const userId = auth.currentUser.uid;
     const dbRef = ref(getDatabase());
-    get(child(dbRef, `favourite/${userId}/cocktails`))
+    return await get(child(dbRef, `favourite/${userId}/cocktails`))
       .then(snapshot => executeFunction(snapshot))
       .catch(error => {
         console.error(error);
       });
   }
+  throw new Error('You need to login to do that!');
 }
 
 export function renderFavouriteCocktailsIcon(snapshot) {

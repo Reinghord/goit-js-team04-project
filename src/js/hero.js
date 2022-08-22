@@ -94,7 +94,6 @@ async function letterListMob(e) {
     try {
       const letter = e.target.value;
       const response = await getCocktailsByLetter(letter);
-      console.log(response);
       if (response.data.drinks) {
         const array = cocktailsMarkup(response);
         localStorage.setItem('markup', JSON.stringify(array));
