@@ -1,5 +1,7 @@
 //Imports
 import debounce from 'lodash.debounce';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { cocktailsMarkup, markupFilter } from './js/cocktails-markup';
 import {
   getRandomCocktails,
@@ -27,6 +29,7 @@ import './js/firebase/addToFavourite';
 import './js/onclick/onClickFavCocks';
 import './js/onclick/onClickFavIngr';
 import './js/onclick/onClickAddFavIngrModal';
+import './js/scroll';
 //Refs
 import {
   backdrop,
@@ -44,6 +47,7 @@ const debounceResizedMarkup = debounce(resizeMarkup, 200);
 
 //!!! Initial page loading !!!
 onLoadingHome();
+AOS.init();
 
 //Function to execute on initial page loading OR when returned to Home window for SPA
 async function onLoadingHome() {

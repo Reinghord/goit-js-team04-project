@@ -20,6 +20,7 @@ export const {
   btnFavIngr,
   sectionHero,
   searchForm,
+  btnScroll,
 } = {
   backdrop: document.querySelector('[data-modal]'),
   cocktailModalMain: document.querySelector('.btn__learn-more__modal'),
@@ -45,4 +46,5 @@ export const {
   btnFavIngr: document.querySelector('[data-action="link-fav-ingr"]'),
   sectionHero: document.querySelector('.hero'),
   searchForm: document.querySelector('[data-search]'),
+  btnScroll: document.querySelector('[data-scroll-home-body]'),
 };
