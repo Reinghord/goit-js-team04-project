@@ -109,8 +109,6 @@ const ingredientsMarkup = function (ingredientsData) {
 
 export function onClickIngr(e) {
   const id = e.target.dataset.idingrpage;
-  console.log(e.target);
-  console.log(id);
   if (e.target.dataset.action === 'favouriteIngr') {
     if (auth.currentUser) {
       addToFavouriteIngr(id);
