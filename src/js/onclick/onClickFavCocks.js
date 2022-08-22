@@ -46,7 +46,7 @@ function onClickFavCocks(snapshot) {
 const cocktailsMarkup = function (cocktailsData) {
   return cocktailsData
     .map(drink => {
-      return `<li class="cocktails__item" id="${drink.idDrink}" >
+      return `<li class="cocktails__item" id="${drink.idDrink}" data-aos="fade-up">
   <img class="cocktails__img" src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
   <p class="cocktails__name">${drink.strDrink}</p>
 <div class="btn__wrapper">  
