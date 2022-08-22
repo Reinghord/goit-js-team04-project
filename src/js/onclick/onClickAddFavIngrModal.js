@@ -53,10 +53,11 @@ export async function getFavouriteIngredients(executeFunction) {
   if (auth.currentUser) {
     const userId = auth.currentUser.uid;
     const dbRef = ref(getDatabase());
-    await get(child(dbRef, `favourite/${userId}/ingredients`))
+    return await get(child(dbRef, `favourite/${userId}/ingredients`))
       .then(snapshot => executeFunction(snapshot))
       .catch(error => {
         console.error(error);
       });
   }
+  throw new Error('You need to login to do that!');
 }
