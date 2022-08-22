@@ -120,7 +120,6 @@ export const onChange = debounce(async e => {
     cocktailsList.innerHTML = noResultsMarkup();
     btnLoadMore.classList.add('btn_hidden');
   }
-  e.target.value = '';
 }, DEBOUNCE_DELAY);
 
 searchForm.addEventListener('input', onChange);
