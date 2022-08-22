@@ -99,6 +99,11 @@
     height: 40px;
   }
 }
+.hero__button:hover {
+  @include transition;
+  color: var(--grapefruit);
+  scale: 1.4;
+}
 
 .hero__img {
   display: block;
