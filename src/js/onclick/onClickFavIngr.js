@@ -25,10 +25,7 @@ import {
 } from '../thecocktailsDB';
 import * as icons from '../../images/icons.svg';
 import { noResultsMarkup } from '../cocktails-markup';
-import {
-  getFavouriteIngredients,
-  renderFavouriteIngredientsIconModal,
-} from './onClickAddFavIngrModal';
+import { getFavouriteIngredients } from './onClickAddFavIngrModal';
 import { auth } from '../../service/firebase';
 import { removeFromFavouriteIngr } from '../../service/firebase';
 import { addToFavouriteIngr } from '../../service/firebase';
@@ -129,5 +126,24 @@ export function onClickIngr(e) {
       return;
     }
     errorNoLogin();
+  }
+}
+
+export function renderFavouriteIngredientsIconModal(snapshot) {
+  {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const dataKeys = Object.keys(data);
+      dataKeys.forEach(id => {
+        const query = document.querySelector(`[data-idingrpage="${id}"]`);
+        if (query) {
+          const svg = query.firstElementChild;
+          query.dataset.action = 'addedToFavouriteIngr';
+          svg.classList.add('btn__svg--fav');
+        }
+      });
+    } else {
+      return;
+    }
   }
 }
