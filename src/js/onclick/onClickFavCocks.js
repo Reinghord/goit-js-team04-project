@@ -13,11 +13,13 @@ import { noResultsMarkup, noResultsMarkupForFilter } from '../cocktails-markup';
 import { cocktailByName, DEBOUNCE_DELAY, onChange } from '../header';
 import { errorNoLogin } from '../notifications';
 import debounce from 'lodash.debounce';
+import { onChangeFilteredByIngt } from './onClickFavIngr';
 
 btnFavCoks.addEventListener('click', async () => {
   try {
     await getFavouriteCocktails(onClickFavCocks);
     searchForm.removeEventListener('input', onChange);
+    searchForm.removeEventListener('input', onChangeFilteredByIngt);
     searchForm.addEventListener('input', onChangeFilteredByName);
     sectionHero.style.display = 'none';
     titleCocktails.textContent = 'Favourite Cocktails';
@@ -108,8 +110,8 @@ export const onChangeFilteredByName = debounce(e => {
   const parsedFav = JSON.parse(cocktails);
   const markup = filteredMarckup(parsedFav);
   cocktailsList.innerHTML = markup;
+  titleCocktails.innerHTML = `Favourite Cocktails`;
   const value = e.target.value.toLocaleLowerCase().trim();
-  // console.log(value);
   const filteredLi = parsedFav.filter(el =>
     el.strDrink.toLocaleLowerCase().includes(value)
   );
@@ -117,8 +119,7 @@ export const onChangeFilteredByName = debounce(e => {
     const markup = filteredMarckup(filteredLi);
     cocktailsList.innerHTML = markup;
   } else {
+    titleCocktails.innerHTML = `Sorry, we didn't find any cocktail for you`;
     cocktailsList.innerHTML = noResultsMarkup();
   }
-
-  // return getFavouriteNameCocktails(value);
 }, DEBOUNCE_DELAY);
