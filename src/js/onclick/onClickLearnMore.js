@@ -113,7 +113,9 @@ function checkIngredients(response) {
   let filteredMeasures = measures.filter(item => item);
   const filteredMarkup = filteredIngr
     .map((ingr, index) => {
-      const readyMarkup = `<li class="ingr__wrapper__ingredient"><button type="button" class="ingr__wrapper__btn">${ingr}</button>${filteredMeasures[index]}</li>`;
+      const readyMarkup = `<li class="ingr__wrapper__ingredient">${
+        filteredMeasures[index] || ''
+      }<button type="button" class="ingr__wrapper__btn">${ingr}</button></li>`;
       return readyMarkup;
     })
     .join('');

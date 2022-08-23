@@ -336,7 +336,7 @@ body.modal-open {
   &:focus {color: var(--grapefruit)}
 }
 
-.ingr__wrapper__btn::before {
+.ingr__wrapper__ingredient::before {
   content: '✶';
   padding-right: 5px;
   color: var(--auxOrange);
@@ -349,6 +349,7 @@ body.modal-open {
 
 
 .ingr__wrapper__btn {
+  text-decoration: underline;
   padding-right: 15px;
   padding-left: 0;
   font-size: 16px;
@@ -362,7 +363,7 @@ body.modal-open {
   &:focus {
     color: var(--grapefruit);
     scale: 1.15;
-    padding-right: 50px;
+    padding-left: 10px;
   }
 }
 
