@@ -124,3 +124,6 @@ export const onChange = debounce(async e => {
 }, DEBOUNCE_DELAY);
 
 searchForm.addEventListener('input', onChange);
+searchForm.addEventListener('submit', e => {
+  e.preventDefault();
+});
