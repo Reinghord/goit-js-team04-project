@@ -188,7 +188,7 @@ export const onChangeFilteredByIngt = debounce(e => {
     const markup = filteredMarckupIngr(filteredLi);
     cocktailsList.innerHTML = markup;
   } else {
-    titleCocktails.innerHTML = `Sorry, we didn't find any cocktail for you`;
+    titleCocktails.innerHTML = `Sorry, but there is no  <span class="search-ingr__name">${e.target.value.trim()}</span> in favourites, please try something else`;
     cocktailsList.innerHTML = noResultsMarkup();
   }
 }, DEBOUNCE_DELAY);

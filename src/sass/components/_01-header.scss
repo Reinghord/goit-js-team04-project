@@ -189,7 +189,9 @@
   pointer-events: none;
   transform: translateY(-20px);
 }
-
+.search-ingr__name {
+  color: var(--grapefruit);
+}
 @include mq(mob-only) {
   .menu__wrapper {
     display: none;
