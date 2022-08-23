@@ -37,6 +37,12 @@
   border: none;
   background-color: transparent;
   fill: var(--black);
+  @include transition;
+  &:hover,
+  &:focus {
+    fill: var(--grapefruit);
+    scale: 1.15;
+  }
 }
 .mob-btn-close {
   position: absolute;

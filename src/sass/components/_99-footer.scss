@@ -8,20 +8,26 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
   .social {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    width: 100%;
   }
   .social__title {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   .social__list {
+    justify-content: center;
     display: flex;
     flex-direction: row;
     gap: 10px;
     flex-wrap: wrap;
     @include mq(mob-only) {
-      flex-direction: column;
+      gap: 5pxpx;
+      flex-wrap: nowrap;
     }
   }
   .social__link {
@@ -34,7 +40,8 @@
       color: var(--gray);
     }
     @include mq(mob-only) {
-      font-size: 20px;
+      padding: 5px;
+      font-size: 12px;
     }
   }
 }
@@ -59,6 +66,7 @@
   &:hover .scroll-up__icon,
   &:focus .scroll-up__icon {
     fill: var(--scrollHover);
+    scale: 1.4;
   }
 }
 
@@ -76,7 +84,14 @@
     width: 50px;
   }
 
-  transition: background-color 250ms ease-in-out, fill 250ms ease-in-out;
+  transition: background-color, scale 250ms ease-in-out, fill 250ms ease-in-out;
 
   cursor: pointer;
+}
+
+.coppy {
+  @include mq(mob-only) {
+    font-size: 14px;
+  }
+
 }
