@@ -36,5 +36,4 @@ function markupFilter(markup) {
 function noResultsMarkup() {
   return `<img class="image_no-result" srcset="${NoResultsImg} 1x, ${NoResultsImg2x} 2x" src="${NoResultsImg}" alt="No Results"></img>`;
 }
-
 export { cocktailsMarkup, markupFilter, noResultsMarkup };

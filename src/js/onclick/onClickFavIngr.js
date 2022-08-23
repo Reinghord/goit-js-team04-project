@@ -30,13 +30,17 @@ import { auth } from '../../service/firebase';
 import { removeFromFavouriteIngr } from '../../service/firebase';
 import { addToFavouriteIngr } from '../../service/firebase';
 import { markupIngredients } from '../cocktailsModalRender';
-import { onChange } from '../header';
+import { DEBOUNCE_DELAY, onChange } from '../header';
 import { errorNoLogin } from '../notifications';
+import { onChangeFilteredByName } from './onClickFavCocks';
+import debounce from 'lodash.debounce';
 
 btnFavIngr.addEventListener('click', async () => {
   try {
     await getFavouriteIngredients(onClickFavIngr);
     searchForm.removeEventListener('input', onChange);
+    searchForm.removeEventListener('input', onChangeFilteredByName);
+    searchForm.addEventListener('input', onChangeFilteredByIngt);
     sectionHero.style.display = 'none';
     titleCocktails.textContent = 'Favourite Ingredients';
     cocktailsList.addEventListener('click', onClickMoreInfoIngr);
@@ -53,6 +57,7 @@ function onClickFavIngr(snapshot) {
     const get = keys.map(key => getIngredientById(key));
     Promise.all(get).then(response => {
       const filteredResponse = response.map(elem => elem.data.ingredients[0]);
+      localStorage.setItem('favouriteIngr', JSON.stringify(filteredResponse));
       const markup = ingredientsMarkup(filteredResponse);
 
       cocktailsList.innerHTML = markup;
@@ -147,3 +152,43 @@ export function renderFavouriteIngredientsIconModal(snapshot) {
     }
   }
 }
+
+//  search ing
+
+const filteredMarckupIngr = element => {
+  return element
+    .map(ingr => {
+      return `<li class="cocktails__item" id="${ingr.idIngredient}" data-aos="fade-up">
+  <img class="cocktails__img" src="https://www.thecocktaildb.com/images/ingredients/${ingr.strIngredient}-Medium.png" alt="${ingr.strIngredient}" />
+  <p class="cocktails__name">${ingr.strIngredient}</p>
+<div class="btn__wrapper">  
+  <button class="btn btn__learn" data-name="${ingr.strIngredient}">Learn more</button>
+  <button class="btn btn__add" data-action="addedToFavouriteIngr" data-idingrpage="${ingr.idIngredient}"><svg width="21px" height="19px" class="btn__svg btn__svg--fav">
+      <use  href="${icons}#icon-icon-fav"></use>
+    </svg>
+  </button>
+    </div>
+</li>`;
+    })
+    .join('');
+};
+
+export const onChangeFilteredByIngt = debounce(e => {
+  e.preventDefault();
+  const cocktails = localStorage.getItem('favouriteIngr');
+  const parsedFav = JSON.parse(cocktails);
+  const markup = filteredMarckupIngr(parsedFav);
+  cocktailsList.innerHTML = markup;
+  titleCocktails.innerHTML = `Favourite Ingredients`;
+  const value = e.target.value.toLocaleLowerCase().trim();
+  const filteredLi = parsedFav.filter(el =>
+    el.strIngredient.toLocaleLowerCase().includes(value)
+  );
+  if (filteredLi.length >= 1) {
+    const markup = filteredMarckupIngr(filteredLi);
+    cocktailsList.innerHTML = markup;
+  } else {
+    titleCocktails.innerHTML = `Sorry, but there is no  <span class="search-ingr__name">${e.target.value.trim()}</span> in favourites, please try something else`;
+    cocktailsList.innerHTML = noResultsMarkup();
+  }
+}, DEBOUNCE_DELAY);

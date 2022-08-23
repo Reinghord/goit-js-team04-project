@@ -28,6 +28,7 @@ const favorite = document.querySelector('.favourite--acctive');
 const LinksTheme = document.querySelector('.favourite__wrapper');
 const favoriteLink = document.querySelectorAll('button.favorite__link');
 export const searchInput = document.querySelector('.search__input');
+export const cocktailByName = document.querySelectorAll('ul.cocktails__list');
 
 const active = document.querySelectorAll(
   'div.header__wrapper, div.theme__wrapper, form.search__form, div.menu__wrapper'
@@ -98,7 +99,7 @@ const removeStyle = () => {
 
 searchForm.addEventListener('click', removeStyle);
 
-const DEBOUNCE_DELAY = 300;
+export const DEBOUNCE_DELAY = 300;
 
 export const onChange = debounce(async e => {
   e.preventDefault();

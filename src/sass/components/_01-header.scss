@@ -9,7 +9,6 @@
 .header__logo-img {
   display: block;
 }
-
 .header__wrapper {
   display: flex;
   flex-direction: row;
@@ -92,6 +91,7 @@
   font-size: 18px;
   line-height: 1.17;
   color: var(--grey);
+  pointer-events: none;
   @include transition;
 }
 
@@ -101,6 +101,7 @@
   font-size: 18px;
   line-height: 1.17;
   color: var(--grey);
+  pointer-events: none;
   @include transition;
 }
 
@@ -117,6 +118,7 @@
   border-radius: 50px;
   position: relative;
   cursor: pointer;
+  @include transition;
 }
 
 .checkbox {
@@ -128,7 +130,7 @@
   }
   &:checked + .label {
     background-color: var(--grapefruit);
-    border: 1px solid var(--white);
+    border: 1px solid var(--black);
   }
 }
 
@@ -187,7 +189,9 @@
   pointer-events: none;
   transform: translateY(-20px);
 }
-
+.search-ingr__name {
+  color: var(--grapefruit);
+}
 @include mq(mob-only) {
   .menu__wrapper {
     display: none;
