@@ -101,16 +101,20 @@ function checkIngredients(response) {
   const list = document.querySelector('.ingr__wrapper__list');
   const singleDrink = response.data.drinks[0];
   const singleDrinkKeys = Object.values(singleDrink);
-  let newMassive = [];
+  let ingrItem = [];
+  let measures = [];
   for (let i = 17; i < singleDrinkKeys.length; i++) {
     if (i < 31) {
-      newMassive.push(singleDrinkKeys[i]);
+      ingrItem.push(singleDrinkKeys[i]);
+      measures.push(singleDrinkKeys[i + 15]);
     }
   }
-  const filteredMassive = newMassive.filter(item => item);
-  const filteredMarkup = filteredMassive
-    .map(ingr => {
-      return `<li class="ingr__wrapper__ingredient"><button type="button" class="ingr__wrapper__btn">${ingr}</button></li>`;
+  const filteredIngr = ingrItem.filter(item => item);
+  let filteredMeasures = measures.filter(item => item);
+  const filteredMarkup = filteredIngr
+    .map((ingr, index) => {
+      const readyMarkup = `<li class="ingr__wrapper__ingredient"><button type="button" class="ingr__wrapper__btn">${ingr}</button>${filteredMeasures[index]}</li>`;
+      return readyMarkup;
     })
     .join('');
   list.innerHTML = filteredMarkup;
