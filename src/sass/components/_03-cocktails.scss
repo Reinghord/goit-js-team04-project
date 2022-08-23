@@ -325,7 +325,7 @@ body.modal-open {
   font-size: 14px;
   line-height: 1.5;
 }
-.ingr__wrapper__ingredient{
+.ingr__wrapper__ingredient {
   font-size: 16px;
   line-height: 26px;
   color: var(--auxOrange);
@@ -334,7 +334,9 @@ body.modal-open {
   @include transition;
   transition-property: color, scale;
   &:hover,
-  &:focus {color: var(--grapefruit)}
+  &:focus {
+    color: var(--grapefruit);
+  }
 }
 
 .ingr__wrapper__ingredient::before {
@@ -348,11 +350,9 @@ body.modal-open {
   color: var(--grapefruit);
 }
 
-
 .ingr__wrapper__btn {
   text-decoration: underline;
-  padding-right: 15px;
-  padding-left: 0;
+  padding-left: 10px;
   font-size: 16px;
   line-height: 26px;
   color: var(--auxOrange);
@@ -363,8 +363,8 @@ body.modal-open {
   &:hover,
   &:focus {
     color: var(--grapefruit);
-    scale: 1.15;
-    padding-left: 10px;
+    scale: 1.1;
+    padding-left: 15px;
   }
 }
 
