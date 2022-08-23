@@ -34,6 +34,7 @@ function onClickFavCocks(snapshot) {
     const get = keys.map(key => getCocktailById(key));
     Promise.all(get).then(response => {
       const filteredResponse = response.map(elem => elem.data.drinks[0]);
+      localStorage.setItem('favourite', JSON.stringify(filteredResponse));
       const markup = cocktailsMarkup(filteredResponse);
       cocktailsList.innerHTML = markup;
     });
@@ -64,37 +65,60 @@ const cocktailsMarkup = function (cocktailsData) {
 
 // search by Name
 
-const getFavouriteNameCocktails = e => {
-  const liElement = cocktailByName[0].childNodes;
-  const newArray = [];
-  const lastElem = cocktailByName[0].childNodes.length - 1;
-  liElement[lastElem].classList.add('hide-my__li');
+// const getFavouriteNameCocktails = e => {
+//   const liElement = cocktailByName[0].childNodes;
+//   const newArray = [];
+//   for (let i = 0; i <= liElement.length; i++) {
+//     const pElement = liElement[i];
+//     const pElementValue = pElement.childNodes[3];
+//     const normalizeElementValue = pElementValue.textContent.toLocaleLowerCase();
+//     liElement[i].classList.remove('hide-my__li');
+//     if (normalizeElementValue.includes(e)) {
+//       cocktailByName.innerHTML = liElement[i];
+//     } else if (!normalizeElementValue.includes(e)) {
+//       newArray.push(Object(liElement[i]));
+//       liElement[i].classList.toggle('hide-my__li');
+//       if (newArray.length >= cocktailByName[0].childNodes.length) {
+//       }
+//     }
+//   }
+// };
 
-  for (let i = 0; i <= liElement.length; i++) {
-    const pElement = liElement[i];
-    const pElementValue = pElement.childNodes[3];
-    const normalizeElementValue = pElementValue.textContent.toLocaleLowerCase();
-    liElement[i].classList.remove('hide-my__li');
-    if (normalizeElementValue.includes(e)) {
-      cocktailByName.innerHTML = liElement[i];
-    } else if (!normalizeElementValue.includes(e)) {
-      liElement[i].classList.toggle('hide-my__li');
-      newArray.push(Object(liElement[i]));
-      if (newArray.length >= cocktailByName[0].childNodes.length) {
-        cocktailsList.insertAdjacentHTML('beforeend', noResultsMarkup());
-        liElement[lastElem + 1].classList.remove('hide-my__li');
-      }
-    }
-  }
+const filteredMarckup = element => {
+  return element
+    .map(drink => {
+      return `<li class="cocktails__item" id="${drink.idDrink}" data-aos="fade-up">
+  <img class="cocktails__img" src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
+  <p class="cocktails__name">${drink.strDrink}</p>
+<div class="btn__wrapper">  
+  <button class="btn btn__learn" data-action="learn-more">Learn more</button>
+  <button class="btn btn__add" data-action="addedToFavourite"><svg width="21px" height="19px" class="btn__svg btn__svg--fav">
+      <use  href="${icons}#icon-icon-fav"></use>
+    </svg>
+  </button>
+    </div>
+</li>`;
+    })
+    .join('');
 };
 
 export const onChangeFilteredByName = debounce(e => {
   e.preventDefault();
-  try {
-    const value = e.target.value.toLocaleLowerCase().trim();
-    const res = getFavouriteNameCocktails(value);
-    console.log(value, res);
-  } catch (error) {
-    // errorNoLogin();
+  const cocktails = localStorage.getItem('favourite');
+  const parsedFav = JSON.parse(cocktails);
+  const markup = filteredMarckup(parsedFav);
+  cocktailsList.innerHTML = markup;
+  const value = e.target.value.toLocaleLowerCase().trim();
+  // console.log(value);
+  const filteredLi = parsedFav.filter(el =>
+    el.strDrink.toLocaleLowerCase().includes(value)
+  );
+  if (filteredLi.length >= 1) {
+    const markup = filteredMarckup(filteredLi);
+    cocktailsList.innerHTML = markup;
+  } else {
+    cocktailsList.innerHTML = noResultsMarkup();
   }
+
+  // return getFavouriteNameCocktails(value);
 }, DEBOUNCE_DELAY);
