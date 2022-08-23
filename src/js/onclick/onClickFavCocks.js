@@ -9,7 +9,7 @@ import {
 } from '../refs';
 import { getCocktailById } from '../thecocktailsDB';
 import * as icons from '../../images/icons.svg';
-import { noResultsMarkup } from '../cocktails-markup';
+import { noResultsMarkup, noResultsMarkupForFilter } from '../cocktails-markup';
 import { cocktailByName, DEBOUNCE_DELAY, onChange } from '../header';
 import { errorNoLogin } from '../notifications';
 import debounce from 'lodash.debounce';
@@ -69,6 +69,7 @@ const getFavouriteNameCocktails = e => {
   const newArray = [];
   const lastElem = cocktailByName[0].childNodes.length - 1;
   liElement[lastElem].classList.add('hide-my__li');
+
   for (let i = 0; i <= liElement.length; i++) {
     const pElement = liElement[i];
     const pElementValue = pElement.childNodes[3];
@@ -80,7 +81,6 @@ const getFavouriteNameCocktails = e => {
       liElement[i].classList.toggle('hide-my__li');
       newArray.push(Object(liElement[i]));
       if (newArray.length >= cocktailByName[0].childNodes.length) {
-        titleCocktails.textContent = `Sorry, we didn't find any cocktail for you`;
         cocktailsList.insertAdjacentHTML('beforeend', noResultsMarkup());
         liElement[lastElem + 1].classList.remove('hide-my__li');
       }
